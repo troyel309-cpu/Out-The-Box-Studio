@@ -1,0 +1,30 @@
+
+> out-the-box-studio-app@1.0.0 start
+> node server.js
+
+Out the Box Studio running at http://localhost:3000
+AI provider: OpenAI connected
+Asset uploaded: D31C6E47-2417-4778-A64D-45D660246046.png (2427217 bytes)
+Request failed: Error: Image edit failed: 401 {
+  "error": {
+    "message": "Incorrect API key provided: YOUR_KEY*HERE. You can find your API key at https://platform.openai.com/account/api-keys.",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": "invalid_api_key"
+  }
+}
+    at editImage (file:///Users/troycampbell/Downloads/OpenAI_Challenge_Submission_20260720-193318/Out_the_Box_Studio_App_V4_2_Reliable_Uploads/server.js:483:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Server.<anonymous> (file:///Users/troycampbell/Downloads/OpenAI_Challenge_Submission_20260720-193318/Out_the_Box_Studio_App_V4_2_Reliable_Uploads/server.js:683:20)
+Asset uploaded: D31C6E47-2417-4778-A64D-45D660246046.png (2427217 bytes)
+Request failed: Error: Image edit failed: 401 {
+  "error": {
+    "message": "Incorrect API key provided: YOUR_KEY*HERE. You can find your API key at https://platform.openai.com/account/api-keys.",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": "invalid_api_key"
+  }
+}
+    at editImage (file:///Users/troycampbell/Downloads/OpenAI_Challenge_Submission_20260720-193318/Out_the_Box_Studio_App_V4_2_Reliable_Uploads/server.js:483:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Server.<anonymous> (file:///Users/troycampbell/Downloads/OpenAI_Challenge_Submission_20260720-193318/Out_the_Box_Studio_App_V4_2_Reliable_Uploads/server.js:683:20)

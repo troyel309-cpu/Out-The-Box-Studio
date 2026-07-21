@@ -1,0 +1,48 @@
+<svg width="640" height="640" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="edge" x1="90" y1="70" x2="550" y2="570" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C4FF73"/>
+      <stop offset=".42" stop-color="#42E8FF"/>
+      <stop offset="1" stop-color="#9B78FF"/>
+    </linearGradient>
+    <linearGradient id="faceA" x1="150" y1="120" x2="330" y2="560">
+      <stop stop-color="#16243D"/>
+      <stop offset="1" stop-color="#0A1020"/>
+    </linearGradient>
+    <linearGradient id="faceB" x1="480" y1="150" x2="270" y2="560">
+      <stop stop-color="#162037"/>
+      <stop offset="1" stop-color="#080D18"/>
+    </linearGradient>
+    <radialGradient id="inside" cx="50%" cy="35%" r="65%">
+      <stop stop-color="#EFFFFF"/>
+      <stop offset=".16" stop-color="#65F4FF"/>
+      <stop offset=".5" stop-color="#52D9FF" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#52D9FF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="24" stdDeviation="26" flood-color="#000" flood-opacity=".45"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="#42E8FF" flood-opacity=".32"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#glow)">
+    <path d="M320 76 538 200v240L320 564 102 440V200L320 76Z" fill="#080D18" stroke="url(#edge)" stroke-width="16" stroke-linejoin="round"/>
+    <path d="M102 200 320 324v240L102 440V200Z" fill="url(#faceA)"/>
+    <path d="M538 200 320 324v240l218-124V200Z" fill="url(#faceB)"/>
+
+    <path d="M320 76 538 200 320 324 102 200 320 76Z" fill="#111A2E" stroke="url(#edge)" stroke-width="16" stroke-linejoin="round"/>
+    <path d="M320 104 466 188 320 272 174 188 320 104Z" fill="url(#inside)"/>
+
+    <path d="M320 324v240M102 200l218 124 218-124" fill="none" stroke="url(#edge)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <path d="M185 134 320 56 455 134 404 163 320 115 236 163 185 134Z" fill="#0D1526" stroke="url(#edge)" stroke-width="14" stroke-linejoin="round"/>
+    <path d="M320 73 407 123 320 173 233 123 320 73Z" fill="url(#inside)"/>
+
+    <circle cx="320" cy="330" r="70" fill="#070B14" stroke="url(#edge)" stroke-width="12"/>
+    <path d="M278 330h84M320 288v84" stroke="url(#edge)" stroke-width="11" stroke-linecap="round"/>
+    <circle cx="320" cy="330" r="18" fill="#FFFFFF"/>
+
+    <path d="m500 104 9 28 28 9-28 9-9 28-9-28-28-9 28-9 9-28Z" fill="#C4FF73"/>
+    <path d="m133 408 7 21 21 7-21 7-7 21-7-21-21-7 21-7 7-21Z" fill="#42E8FF"/>
+  </g>
+</svg>

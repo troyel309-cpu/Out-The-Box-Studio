@@ -1,0 +1,14 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="a" x1="40" y1="20" x2="470" y2="490"><stop stop-color="#A9FF68"/><stop offset=".5" stop-color="#35E0FF"/><stop offset="1" stop-color="#7C5CFF"/></linearGradient>
+<linearGradient id="b" x1="120" y1="100" x2="400" y2="420"><stop stop-color="#141D33"/><stop offset="1" stop-color="#070B15"/></linearGradient>
+</defs>
+<rect x="40" y="40" width="432" height="432" rx="120" fill="url(#a)"/>
+<rect x="70" y="70" width="372" height="372" rx="98" fill="url(#b)"/>
+<path d="M256 125 374 194v124L256 387 138 318V194l118-69Z" fill="none" stroke="url(#a)" stroke-width="18" stroke-linejoin="round"/>
+<path d="m145 198 111 65 111-65M256 263v122" fill="none" stroke="url(#a)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="256" cy="263" r="54" fill="#0A1020" stroke="url(#a)" stroke-width="12"/>
+<text x="256" y="281" text-anchor="middle" fill="#fff" font-size="50" font-family="Arial" font-weight="900">OTB</text>
+<path d="m386 111 8 23 23 8-23 8-8 23-8-23-23-8 23-8 8-23Z" fill="#A9FF68"/>
+<path d="m119 334 6 18 18 6-18 6-6 18-6-18-18-6 18-6 6-18Z" fill="#35E0FF"/>
+</svg>

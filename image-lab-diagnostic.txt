@@ -1,0 +1,36 @@
+OUT THE BOX STUDIOS — IMAGE LAB DIAGNOSTIC
+Generated: Mon Jul 20 20:49:42 CDT 2026
+
+=== BUTTONS / IMAGE LAB ELEMENTS ===
+119:    {name:"Generated images",value:realImage?1:0,of:1,state:realImage?"verified":"provider"},
+120:    {name:"Generated narration",value:realAudio?1:0,of:1,state:realAudio?"verified":"provider"},
+146:  const imagePrompt=p.artifacts?.find(a=>a.type==="image-prompts"); if(imagePrompt) $("#imagePrompt").value=imagePrompt.content.split("\n")[0].replace(/^Scene 1[^:]*:\s*/,"");
+210:  const select=document.querySelector("#referenceAsset");
+269:        const mode=document.querySelector("#productionMode");
+273:        const prompt=document.querySelector("#imagePrompt");
+384:      const select=$("#referenceAsset");
+388:        $("#productionMode").value="hybrid";
+429:  const mode=$("#productionMode").value;
+432:  $("#referenceAsset").disabled=mode==="ai";
+433:  $("#generateImage").textContent=mode==="assets"?"Attach My Picture":mode==="hybrid"?"Build From My Picture":"Generate New AI Image";
+438:$("#productionMode").onchange=updateModeHelp;
+460:$("#generateImage").onclick=async()=>{
+461:  if(!currentProject)return alert("Open or create a project first.");const prompt=$("#imagePrompt").value.trim();if(!prompt)return alert("Add a scene prompt.");
+462:  const b=$("#generateImage");b.disabled=true;b.textContent="Generating image…";addEvent("Continuity Engine locked the selected character","working");
+463:  try{const d=await api(`/api/projects/${currentProject.id}/image`,{method:"POST",body:JSON.stringify({prompt,characterId:$("#characterSelect").value,shotType:$("#shotType").value,mode:$("#productionMode").value,assetId:$("#referenceAsset").value||null})});$("#imageOutput").innerHTML=`<img src="${d.imageUrl}" alt="Generated scene">`;showProject(d.project);addEvent("Real generated image attached and verified");await loadProjects()}
+
+=== FRONTEND IMAGE API CALLS ===
+
+=== SERVER IMAGE ROUTES ===
+404:      { name: "Video Assembly AI", status: "blocked", output: "Waiting for generated scene images and audio" },
+417:      { type: "qa", name: "qa_report.md", content: "PASS: production package exists. BLOCKED: no newly generated images, voice track, music, or MP4. Do not mark final video complete." }
+
+=== JAVASCRIPT SYNTAX ===
+
+=== ASSETS ENDPOINT ===
+[{"id":"3329be3f-5485-469d-977f-1884ff9b12e8","name":"D31C6E47-2417-4778-A64D-45D660246046","originalName":"D31C6E47-2417-4778-A64D-45D660246046.png","category":"reference","tags":["Tiny Troy"],"mimeType":"image/png","sizeBytes":2427217,"url":"/uploads/3329be3f-5485-469d-977f-1884ff9b12e8.png","officialReference":true,"createdAt":"2026-07-21T01:05:12.812Z"},{"id":"240170fe-5f70-462e-b118-779dfc65b8ba","name":"D31C6E47-2417-4778-A64D-45D660246046","originalName":"D31C6E47-2417-4778-A64D-45D660246046.png","category":"reference","tags":["Tiny Troy"],"mimeType":"image/png","sizeBytes":2427217,"url":"/uploads/240170fe-5f70-462e-b118-779dfc65b8ba.png","officialReference":true,"createdAt":"2026-07-21T00:59:04.620Z"},{"id":"e1e4931d-2bc5-4d0e-ba7f-d68521bbabd5","name":"D31C6E47-2417-4778-A64D-45D660246046","originalName":"D31C6E47-2417-4778-A64D-45D660246046.png","category":"reference","tags":["Tiny Troy"],"mimeType":"image/png","sizeBytes":2427217,"url":"/uploads/e1e4931d-2bc5-4d0e-ba7f-d68521bbabd5.png","officialReference":true,"createdAt":"2026-07-21T00:57:51.715Z"},{"id":"e9773f35-dce5-4ec1-82f6-071f8606c00d","name":"D31C6E47-2417-4778-A64D-45D660246046","originalName":"D31C6E47-2417-4778-A64D-45D660246046.png","category":"reference","tags":["Tiny Troy"],"mimeType":"image/png","sizeBytes":2427217,"url":"/uploads/e9773f35-dce5-4ec1-82f6-071f8606c00d.png","officialReference":false,"createdAt":"2026-07-21T00:38:08.299Z"}]
+
+=== PAGE SCRIPT REFERENCES ===
+92:          <div class="control-grid three"><label>Production mode<select id="productionMode"><option value="hybrid">Hybrid — my picture + AI</option><option value="assets">My picture only</option><option value="ai">AI only</option></select></label><label>Reference image<select id="referenceAsset"><option value="">Select uploaded picture</option></select></label><label>Character<select id="characterSelect"></select></label><label>Shot type<select id="shotType"><option value="cinematic">Cinematic</option><option value="wide shot">Wide shot</option><option value="close-up">Close-up</option><option value="tracking shot">Tracking shot</option><option value="hero product shot">Hero product shot</option><option value="interior showroom">Interior showroom</option><option value="exterior dealership">Exterior dealership</option></select></label></div>
+94:          <textarea id="imagePrompt" placeholder="Paste or refine a Tiny Troy scene prompt..."></textarea>
+108:  <script src="/app.js" type="module"></script>

@@ -1,0 +1,27 @@
+<svg width="640" height="640" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="105" y1="80" x2="535" y2="560">
+      <stop stop-color="#b7ff65"/>
+      <stop offset=".5" stop-color="#35e5ff"/>
+      <stop offset="1" stop-color="#8a69ff"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity=".42"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="15" flood-color="#35e5ff" flood-opacity=".28"/>
+    </filter>
+  </defs>
+  <g filter="url(#glow)">
+    <path d="M120 300 320 404 520 300v202L320 606 120 502V300Z"
+      fill="#08101d" stroke="url(#g)" stroke-width="18" stroke-linejoin="round"/>
+    <path d="M120 300 320 404 520 300M320 404v202"
+      fill="none" stroke="url(#g)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M112 290 238 214 320 290 120 394 112 290Z"
+      fill="#111b2e" stroke="url(#g)" stroke-width="18" stroke-linejoin="round"/>
+    <path d="M528 290 402 214 320 290 520 394 528 290Z"
+      fill="#111b2e" stroke="url(#g)" stroke-width="18" stroke-linejoin="round"/>
+    <path d="M320 252V124" stroke="url(#g)" stroke-width="18" stroke-linecap="round"/>
+    <path d="m320 78 15 31 35 5-25 24 6 35-31-16-31 16 6-35-25-24 35-5 15-31Z" fill="url(#g)"/>
+    <text x="320" y="365" text-anchor="middle" fill="#fff"
+      font-size="82" font-family="Arial,Helvetica,sans-serif" font-weight="900">OTB</text>
+  </g>
+</svg>

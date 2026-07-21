@@ -1,0 +1,1335 @@
+[
+  {
+    "id": "ac63375c-0acc-4147-8b95-c7b552556f74",
+    "idea": "hi im troy Polished 3D mascot visual style. Keep Tiny Troy's identity continuity-locked to the selected reference image. Preserve facial structure, skin tone, beard, hairstyle, hat, eye color, and body proportions.",
+    "createdAt": "2026-07-21T04:27:42.511Z",
+    "crewPlan": {
+      "status": "planned",
+      "requiredCapabilities": [
+        "project-planning",
+        "crew-assembly",
+        "workflow-routing",
+        "artifact-verification",
+        "release-validation",
+        "image-prompting",
+        "image-generation",
+        "character-design",
+        "brand-consistency"
+      ],
+      "crew": [
+        {
+          "id": "studio-director",
+          "name": "Studio Director AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "project-planning",
+            "crew-assembly",
+            "workflow-routing"
+          ],
+          "ready": true
+        },
+        {
+          "id": "illustration-ai",
+          "name": "Illustration AI",
+          "health": "waiting-for-provider",
+          "matchedCapabilities": [
+            "image-prompting",
+            "image-generation"
+          ],
+          "ready": false
+        },
+        {
+          "id": "character-ai",
+          "name": "Character Continuity AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "character-design",
+            "brand-consistency"
+          ],
+          "ready": true
+        },
+        {
+          "id": "quality-ai",
+          "name": "Evidence Quality AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "artifact-verification",
+            "release-validation"
+          ],
+          "ready": true
+        }
+      ],
+      "executionPlan": {
+        "idea": "hi im troy Polished 3D mascot visual style. Keep Tiny Troy's identity continuity-locked to the selected reference image. Preserve facial structure, skin tone, beard, hairstyle, hat, eye color, and body proportions.",
+        "steps": [
+          {
+            "order": 1,
+            "workerId": "studio-director",
+            "worker": "Studio Director AI",
+            "job": "Interpret the idea, define the deliverables, and coordinate the crew.",
+            "status": "ready"
+          },
+          {
+            "order": 2,
+            "workerId": "character-ai",
+            "worker": "Character Continuity AI",
+            "job": "Protect character identity and brand consistency.",
+            "status": "ready"
+          },
+          {
+            "order": 3,
+            "workerId": "illustration-ai",
+            "worker": "Illustration AI",
+            "job": "Prepare and generate the required visual assets.",
+            "status": "waiting-for-provider"
+          },
+          {
+            "order": 4,
+            "workerId": "quality-ai",
+            "worker": "Evidence Quality AI",
+            "job": "Verify artifacts, record evidence, and approve or block release.",
+            "status": "ready"
+          }
+        ],
+        "releaseRule": "The project cannot be marked complete until Evidence Quality AI verifies the required artifacts."
+      },
+      "evidence": {
+        "workerRegistryLoaded": true,
+        "workersConsidered": 7,
+        "workersSelected": 4
+      }
+    },
+    "title": "New Dream",
+    "status": "production-package-ready",
+    "releaseLevel": "Concept package — no final video rendered — AI provider fallback used: \"undefined\" is not valid JSON",
+    "workers": [
+      {
+        "name": "Studio Director AI",
+        "status": "complete",
+        "output": "Creative brief"
+      },
+      {
+        "name": "Story Architect AI",
+        "status": "complete",
+        "output": "30-second script"
+      },
+      {
+        "name": "Storyboard AI",
+        "status": "complete",
+        "output": "3-scene storyboard"
+      },
+      {
+        "name": "Character Continuity AI",
+        "status": "complete",
+        "output": "Tiny Troy continuity guide"
+      },
+      {
+        "name": "Image Director AI",
+        "status": "complete",
+        "output": "Generated scene image"
+      },
+      {
+        "name": "Video Assembly AI",
+        "status": "blocked",
+        "output": "Waiting for generated scene images and audio"
+      },
+      {
+        "name": "Evidence QA AI",
+        "status": "complete",
+        "output": "Truthful release check"
+      }
+    ],
+    "artifacts": [
+      {
+        "type": "creative-brief",
+        "name": "creative_brief.md",
+        "content": "Create a premium Tiny Troy commercial from this idea:\n\nhi im troy Polished 3D mascot visual style. Keep Tiny Troy's identity continuity-locked to the selected reference image. Preserve facial structure, skin tone, beard, hairstyle, hat, eye color, and body proportions."
+      },
+      {
+        "type": "script",
+        "name": "commercial_script.md",
+        "content": "Scene 1: Tiny Troy enters the showroom and speaks directly to drivers.\nScene 2: Vehicles transform around him while he explains the upgrade experience.\nScene 3: A customer receives keys and Tiny Troy delivers the call to action."
+      },
+      {
+        "type": "storyboard",
+        "name": "storyboard.json",
+        "content": "[\n  {\n    \"scene\": 1,\n    \"title\": \"Showroom Arrival\",\n    \"shot\": \"Wide-to-medium tracking shot\",\n    \"goal\": \"Introduce Tiny Troy and the dealership.\"\n  },\n  {\n    \"scene\": 2,\n    \"title\": \"Vehicle Transformation\",\n    \"shot\": \"Dynamic orbit with energetic transitions\",\n    \"goal\": \"Show options and excitement.\"\n  },\n  {\n    \"scene\": 3,\n    \"title\": \"Customer Payoff\",\n    \"shot\": \"Warm hero shot with keys\",\n    \"goal\": \"Deliver trust and CTA.\"\n  }\n]"
+      },
+      {
+        "type": "character",
+        "name": "tiny_troy_continuity.md",
+        "content": "Warm brown skin, large expressive brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, brown fedora, polished stylized 3D appearance, confident and approachable."
+      },
+      {
+        "type": "image-prompts",
+        "name": "scene_prompts.md",
+        "content": "Scene 1: Stylized 3D Tiny Troy entering a bright Nissan showroom, cinematic lighting, original family-friendly animated-film quality.\nScene 2: Tiny Troy snapping his fingers as vehicles transition around him, energetic camera movement, polished materials.\nScene 3: Tiny Troy handing keys to a smiling customer, warm emotional lighting, dealership branding handled accurately."
+      },
+      {
+        "type": "qa",
+        "name": "qa_report.md",
+        "content": "PASS: production package exists. BLOCKED: no newly generated images, voice track, music, or MP4. Do not mark final video complete."
+      },
+      {
+        "id": "9cac13d6-5fdb-4656-a359-259ae1939f94",
+        "type": "image",
+        "name": "ac63375c-0acc-4147-8b95-c7b552556f74-reference-edit-1784608090558.png",
+        "url": "/generated/ac63375c-0acc-4147-8b95-c7b552556f74-reference-edit-1784608090558.png",
+        "content": "hi im troy Polished 3D mascot visual style. Keep Tiny Troy's identity continuity-locked to the selected reference image. Preserve facial structure, skin tone, beard, hairstyle, hat, eye color, and body proportions.",
+        "finalPrompt": "CHARACTER CONTINUITY LOCK — Tiny Troy V1.0\nAppearance: Polished stylized 3D caricature with warm brown skin, large expressive brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, and a brown fedora.\nWardrobe: Clean modern automotive-sales outfit; blue or neutral top unless the project specifies otherwise.\nPersonality: Confident, approachable, energetic, trustworthy, and family-friendly.\nContinuity rules:\n- Keep the full black beard and mustache\n- Keep the brown fedora\n- Keep warm brown skin and large brown eyes\n- Do not redesign facial proportions between scenes\n- Keep wardrobe consistent across one project\nShot type: Medium cinematic shot.\nScene request: hi im troy Polished 3D mascot visual style. Keep Tiny Troy's identity continuity-locked to the selected reference image. Preserve facial structure, skin tone, beard, hairstyle, hat, eye color, and body proportions.\nNegative constraints: No child version, no clean-shaven face, no missing fedora, no different ethnicity, no distorted hands, no malformed logos, no duplicate limbs, no text gibberish.\nMaintain the registered identity. Do not redesign the character.",
+        "characterId": "tiny-troy",
+        "characterVersion": "1.0",
+        "shotType": "Medium cinematic shot",
+        "mode": "hybrid",
+        "sourceAssetId": "2ecb2b56-79ac-4a5b-87ed-01f9ce700fb4",
+        "sourceAssetUrl": "/uploads/2ecb2b56-79ac-4a5b-87ed-01f9ce700fb4.png",
+        "provider": "OpenAI",
+        "model": "gpt-image-1",
+        "createdAt": "2026-07-21T04:28:10.563Z",
+        "approvalStatus": "needs-review"
+      }
+    ],
+    "runtime": {
+      "status": "in-progress",
+      "currentStage": "voice",
+      "stages": [
+        {
+          "id": "crew",
+          "name": "Crew Assembly",
+          "worker": "Studio Director AI",
+          "required": [],
+          "status": "complete"
+        },
+        {
+          "id": "story",
+          "name": "Story Package",
+          "worker": "Story AI",
+          "required": [
+            "creative-brief",
+            "script",
+            "storyboard"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "character",
+          "name": "Character Continuity",
+          "worker": "Character Continuity AI",
+          "required": [
+            "character"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "visuals",
+          "name": "Visual Direction",
+          "worker": "Illustration AI",
+          "required": [
+            "image-prompts"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "voice",
+          "name": "Voice Direction",
+          "worker": "Voice AI",
+          "required": [
+            "audio-direction"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "video",
+          "name": "Video Assembly Plan",
+          "worker": "Video Assembly AI",
+          "required": [
+            "video-plan"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "quality",
+          "name": "Evidence Review",
+          "worker": "Evidence Quality AI",
+          "required": [
+            "qa"
+          ],
+          "status": "complete"
+        }
+      ],
+      "evidence": {
+        "requiredArtifacts": 8,
+        "verifiedArtifacts": 6,
+        "releaseApproved": false,
+        "finalMediaRendered": false
+      }
+    }
+  },
+  {
+    "id": "64866863-91a6-46e0-8861-3785451e1d02",
+    "idea": "troy selling a car Polished 3D mascot style. Confident mood. Medium cinematic shot. Bright professional lighting. Keep Tiny Troy's identity continuity-locked to the selected reference image. Preserve facial structure, skin tone, beard, hairstyle, signature hat, eye color, and body proportions.",
+    "createdAt": "2026-07-21T03:26:13.126Z",
+    "crewPlan": {
+      "status": "planned",
+      "requiredCapabilities": [
+        "project-planning",
+        "crew-assembly",
+        "workflow-routing",
+        "artifact-verification",
+        "release-validation",
+        "image-prompting",
+        "image-generation",
+        "character-design",
+        "brand-consistency"
+      ],
+      "crew": [
+        {
+          "id": "studio-director",
+          "name": "Studio Director AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "project-planning",
+            "crew-assembly",
+            "workflow-routing"
+          ],
+          "ready": true
+        },
+        {
+          "id": "illustration-ai",
+          "name": "Illustration AI",
+          "health": "waiting-for-provider",
+          "matchedCapabilities": [
+            "image-prompting",
+            "image-generation"
+          ],
+          "ready": false
+        },
+        {
+          "id": "character-ai",
+          "name": "Character Continuity AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "character-design",
+            "brand-consistency"
+          ],
+          "ready": true
+        },
+        {
+          "id": "quality-ai",
+          "name": "Evidence Quality AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "artifact-verification",
+            "release-validation"
+          ],
+          "ready": true
+        }
+      ],
+      "executionPlan": {
+        "idea": "troy selling a car Polished 3D mascot style. Confident mood. Medium cinematic shot. Bright professional lighting. Keep Tiny Troy's identity continuity-locked to the selected reference image. Preserve facial structure, skin tone, beard, hairstyle, signature hat, eye color, and body proportions.",
+        "steps": [
+          {
+            "order": 1,
+            "workerId": "studio-director",
+            "worker": "Studio Director AI",
+            "job": "Interpret the idea, define the deliverables, and coordinate the crew.",
+            "status": "ready"
+          },
+          {
+            "order": 2,
+            "workerId": "character-ai",
+            "worker": "Character Continuity AI",
+            "job": "Protect character identity and brand consistency.",
+            "status": "ready"
+          },
+          {
+            "order": 3,
+            "workerId": "illustration-ai",
+            "worker": "Illustration AI",
+            "job": "Prepare and generate the required visual assets.",
+            "status": "waiting-for-provider"
+          },
+          {
+            "order": 4,
+            "workerId": "quality-ai",
+            "worker": "Evidence Quality AI",
+            "job": "Verify artifacts, record evidence, and approve or block release.",
+            "status": "ready"
+          }
+        ],
+        "releaseRule": "The project cannot be marked complete until Evidence Quality AI verifies the required artifacts."
+      },
+      "evidence": {
+        "workerRegistryLoaded": true,
+        "workersConsidered": 7,
+        "workersSelected": 4
+      }
+    },
+    "title": "New Dream",
+    "status": "production-package-ready",
+    "releaseLevel": "Concept package — no final video rendered — AI provider fallback used: \"undefined\" is not valid JSON",
+    "workers": [
+      {
+        "name": "Studio Director AI",
+        "status": "complete",
+        "output": "Creative brief"
+      },
+      {
+        "name": "Story Architect AI",
+        "status": "complete",
+        "output": "30-second script"
+      },
+      {
+        "name": "Storyboard AI",
+        "status": "complete",
+        "output": "3-scene storyboard"
+      },
+      {
+        "name": "Character Continuity AI",
+        "status": "complete",
+        "output": "Tiny Troy continuity guide"
+      },
+      {
+        "name": "Image Director AI",
+        "status": "complete",
+        "output": "Generated scene image"
+      },
+      {
+        "name": "Video Assembly AI",
+        "status": "blocked",
+        "output": "Waiting for generated scene images and audio"
+      },
+      {
+        "name": "Evidence QA AI",
+        "status": "complete",
+        "output": "Truthful release check"
+      }
+    ],
+    "artifacts": [
+      {
+        "type": "creative-brief",
+        "name": "creative_brief.md",
+        "content": "Create a premium Tiny Troy commercial from this idea:\n\ntroy selling a car Polished 3D mascot style. Confident mood. Medium cinematic shot. Bright professional lighting. Keep Tiny Troy's identity continuity-locked to the selected reference image. Preserve facial structure, skin tone, beard, hairstyle, signature hat, eye color, and body proportions."
+      },
+      {
+        "type": "script",
+        "name": "commercial_script.md",
+        "content": "Scene 1: Tiny Troy enters the showroom and speaks directly to drivers.\nScene 2: Vehicles transform around him while he explains the upgrade experience.\nScene 3: A customer receives keys and Tiny Troy delivers the call to action."
+      },
+      {
+        "type": "storyboard",
+        "name": "storyboard.json",
+        "content": "[\n  {\n    \"scene\": 1,\n    \"title\": \"Showroom Arrival\",\n    \"shot\": \"Wide-to-medium tracking shot\",\n    \"goal\": \"Introduce Tiny Troy and the dealership.\"\n  },\n  {\n    \"scene\": 2,\n    \"title\": \"Vehicle Transformation\",\n    \"shot\": \"Dynamic orbit with energetic transitions\",\n    \"goal\": \"Show options and excitement.\"\n  },\n  {\n    \"scene\": 3,\n    \"title\": \"Customer Payoff\",\n    \"shot\": \"Warm hero shot with keys\",\n    \"goal\": \"Deliver trust and CTA.\"\n  }\n]"
+      },
+      {
+        "type": "character",
+        "name": "tiny_troy_continuity.md",
+        "content": "Warm brown skin, large expressive brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, brown fedora, polished stylized 3D appearance, confident and approachable."
+      },
+      {
+        "type": "image-prompts",
+        "name": "scene_prompts.md",
+        "content": "Scene 1: Stylized 3D Tiny Troy entering a bright Nissan showroom, cinematic lighting, original family-friendly animated-film quality.\nScene 2: Tiny Troy snapping his fingers as vehicles transition around him, energetic camera movement, polished materials.\nScene 3: Tiny Troy handing keys to a smiling customer, warm emotional lighting, dealership branding handled accurately."
+      },
+      {
+        "type": "qa",
+        "name": "qa_report.md",
+        "content": "PASS: production package exists. BLOCKED: no newly generated images, voice track, music, or MP4. Do not mark final video complete."
+      },
+      {
+        "id": "90226919-1f75-4a16-8a69-b11acea64d0c",
+        "type": "image",
+        "name": "64866863-91a6-46e0-8861-3785451e1d02-reference-edit-1784604458571.png",
+        "url": "/generated/64866863-91a6-46e0-8861-3785451e1d02-reference-edit-1784604458571.png",
+        "content": "troy selling a car Polished 3D mascot style. Confident mood. Medium cinematic shot. Bright professional lighting. Keep Tiny Troy's identity continuity-locked to the selected reference image. Preserve facial structure, skin tone, beard, hairstyle, signature hat, eye color, and body proportions.",
+        "finalPrompt": "CHARACTER CONTINUITY LOCK — Tiny Troy V1.0\nAppearance: Polished stylized 3D caricature with warm brown skin, large expressive brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, and a brown fedora.\nWardrobe: Clean modern automotive-sales outfit; blue or neutral top unless the project specifies otherwise.\nPersonality: Confident, approachable, energetic, trustworthy, and family-friendly.\nContinuity rules:\n- Keep the full black beard and mustache\n- Keep the brown fedora\n- Keep warm brown skin and large brown eyes\n- Do not redesign facial proportions between scenes\n- Keep wardrobe consistent across one project\nShot type: Medium cinematic shot.\nScene request: troy selling a car Polished 3D mascot style. Confident mood. Medium cinematic shot. Bright professional lighting. Keep Tiny Troy's identity continuity-locked to the selected reference image. Preserve facial structure, skin tone, beard, hairstyle, signature hat, eye color, and body proportions.\nNegative constraints: No child version, no clean-shaven face, no missing fedora, no different ethnicity, no distorted hands, no malformed logos, no duplicate limbs, no text gibberish.\nMaintain the registered identity. Do not redesign the character.",
+        "characterId": "tiny-troy",
+        "characterVersion": "1.0",
+        "shotType": "Medium cinematic shot",
+        "mode": "hybrid",
+        "sourceAssetId": "e1e4931d-2bc5-4d0e-ba7f-d68521bbabd5",
+        "sourceAssetUrl": "/uploads/e1e4931d-2bc5-4d0e-ba7f-d68521bbabd5.png",
+        "provider": "OpenAI",
+        "model": "gpt-image-1",
+        "createdAt": "2026-07-21T03:27:38.577Z",
+        "approvalStatus": "needs-review"
+      }
+    ],
+    "runtime": {
+      "status": "in-progress",
+      "currentStage": "voice",
+      "stages": [
+        {
+          "id": "crew",
+          "name": "Crew Assembly",
+          "worker": "Studio Director AI",
+          "required": [],
+          "status": "complete"
+        },
+        {
+          "id": "story",
+          "name": "Story Package",
+          "worker": "Story AI",
+          "required": [
+            "creative-brief",
+            "script",
+            "storyboard"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "character",
+          "name": "Character Continuity",
+          "worker": "Character Continuity AI",
+          "required": [
+            "character"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "visuals",
+          "name": "Visual Direction",
+          "worker": "Illustration AI",
+          "required": [
+            "image-prompts"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "voice",
+          "name": "Voice Direction",
+          "worker": "Voice AI",
+          "required": [
+            "audio-direction"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "video",
+          "name": "Video Assembly Plan",
+          "worker": "Video Assembly AI",
+          "required": [
+            "video-plan"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "quality",
+          "name": "Evidence Review",
+          "worker": "Evidence Quality AI",
+          "required": [
+            "qa"
+          ],
+          "status": "complete"
+        }
+      ],
+      "evidence": {
+        "requiredArtifacts": 8,
+        "verifiedArtifacts": 6,
+        "releaseApproved": false,
+        "finalMediaRendered": false
+      }
+    }
+  },
+  {
+    "id": "4da775e5-8fd2-452b-b7ee-8ade21ab9c04",
+    "idea": "Tiny Troy trying to make a sell",
+    "createdAt": "2026-07-21T03:01:50.361Z",
+    "crewPlan": {
+      "status": "planned",
+      "requiredCapabilities": [
+        "project-planning",
+        "crew-assembly",
+        "workflow-routing",
+        "artifact-verification",
+        "release-validation",
+        "character-design",
+        "brand-consistency"
+      ],
+      "crew": [
+        {
+          "id": "studio-director",
+          "name": "Studio Director AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "project-planning",
+            "crew-assembly",
+            "workflow-routing"
+          ],
+          "ready": true
+        },
+        {
+          "id": "character-ai",
+          "name": "Character Continuity AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "character-design",
+            "brand-consistency"
+          ],
+          "ready": true
+        },
+        {
+          "id": "quality-ai",
+          "name": "Evidence Quality AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "artifact-verification",
+            "release-validation"
+          ],
+          "ready": true
+        }
+      ],
+      "executionPlan": {
+        "idea": "Tiny Troy trying to make a sell",
+        "steps": [
+          {
+            "order": 1,
+            "workerId": "studio-director",
+            "worker": "Studio Director AI",
+            "job": "Interpret the idea, define the deliverables, and coordinate the crew.",
+            "status": "ready"
+          },
+          {
+            "order": 2,
+            "workerId": "character-ai",
+            "worker": "Character Continuity AI",
+            "job": "Protect character identity and brand consistency.",
+            "status": "ready"
+          },
+          {
+            "order": 3,
+            "workerId": "quality-ai",
+            "worker": "Evidence Quality AI",
+            "job": "Verify artifacts, record evidence, and approve or block release.",
+            "status": "ready"
+          }
+        ],
+        "releaseRule": "The project cannot be marked complete until Evidence Quality AI verifies the required artifacts."
+      },
+      "evidence": {
+        "workerRegistryLoaded": true,
+        "workersConsidered": 7,
+        "workersSelected": 3
+      }
+    },
+    "title": "New Dream",
+    "status": "production-package-ready",
+    "releaseLevel": "Verified production package — final media not rendered",
+    "workers": [
+      {
+        "name": "Studio Director AI",
+        "status": "complete",
+        "output": "Creative brief"
+      },
+      {
+        "name": "Story Architect AI",
+        "status": "complete",
+        "output": "30-second script"
+      },
+      {
+        "name": "Storyboard AI",
+        "status": "complete",
+        "output": "3-scene storyboard"
+      },
+      {
+        "name": "Character Continuity AI",
+        "status": "complete",
+        "output": "Tiny Troy continuity guide"
+      },
+      {
+        "name": "Image Director AI",
+        "status": "complete",
+        "output": "Generated scene image"
+      },
+      {
+        "name": "Video Assembly AI",
+        "status": "planned",
+        "output": "Video assembly plan complete; render provider still required"
+      },
+      {
+        "name": "Evidence QA AI",
+        "status": "complete",
+        "output": "Truthful release check"
+      }
+    ],
+    "artifacts": [
+      {
+        "type": "creative-brief",
+        "name": "creative_brief.md",
+        "content": "Create a premium Tiny Troy commercial from this idea:\n\nTiny Troy trying to make a sell"
+      },
+      {
+        "type": "script",
+        "name": "commercial_script.md",
+        "content": "Scene 1: Tiny Troy enters the showroom and speaks directly to drivers.\nScene 2: Vehicles transform around him while he explains the upgrade experience.\nScene 3: A customer receives keys and Tiny Troy delivers the call to action."
+      },
+      {
+        "type": "storyboard",
+        "name": "storyboard.json",
+        "content": "[\n  {\n    \"scene\": 1,\n    \"title\": \"Showroom Arrival\",\n    \"shot\": \"Wide-to-medium tracking shot\",\n    \"goal\": \"Introduce Tiny Troy and the dealership.\"\n  },\n  {\n    \"scene\": 2,\n    \"title\": \"Vehicle Transformation\",\n    \"shot\": \"Dynamic orbit with energetic transitions\",\n    \"goal\": \"Show options and excitement.\"\n  },\n  {\n    \"scene\": 3,\n    \"title\": \"Customer Payoff\",\n    \"shot\": \"Warm hero shot with keys\",\n    \"goal\": \"Deliver trust and CTA.\"\n  }\n]"
+      },
+      {
+        "type": "character",
+        "name": "tiny_troy_continuity.md",
+        "content": "Warm brown skin, large expressive brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, brown fedora, polished stylized 3D appearance, confident and approachable."
+      },
+      {
+        "type": "image-prompts",
+        "name": "scene_prompts.md",
+        "content": "Scene 1: Stylized 3D Tiny Troy entering a bright Nissan showroom, cinematic lighting, original family-friendly animated-film quality.\nScene 2: Tiny Troy snapping his fingers as vehicles transition around him, energetic camera movement, polished materials.\nScene 3: Tiny Troy handing keys to a smiling customer, warm emotional lighting, dealership branding handled accurately."
+      },
+      {
+        "type": "qa",
+        "name": "qa_report.md",
+        "content": "PASS: production package exists. BLOCKED: no newly generated images, voice track, music, or MP4. Do not mark final video complete."
+      },
+      {
+        "type": "audio-direction",
+        "name": "voice_direction.md",
+        "content": "Voice: warm, confident, conversational, trustworthy. Pace: energetic but easy to understand. Music: modern and uplifting, kept below narration. Sound design: restrained transitions and one memorable payoff accent."
+      },
+      {
+        "type": "video-plan",
+        "name": "video_assembly_plan.json",
+        "content": "{\n  \"format\": \"30-second master\",\n  \"aspectRatios\": [\n    \"16:9\",\n    \"9:16\",\n    \"1:1\"\n  ],\n  \"timeline\": [\n    {\n      \"range\": \"0-5s\",\n      \"layer\": \"Hook + title\"\n    },\n    {\n      \"range\": \"5-18s\",\n      \"layer\": \"Main story + visual progression\"\n    },\n    {\n      \"range\": \"18-26s\",\n      \"layer\": \"Proof/payoff\"\n    },\n    {\n      \"range\": \"26-30s\",\n      \"layer\": \"CTA + logo/end card\"\n    }\n  ],\n  \"renderState\": \"planned-not-rendered\"\n}"
+      },
+      {
+        "id": "4a9b7559-47d0-4b20-8f86-da2aaaf241e9",
+        "type": "image",
+        "name": "4da775e5-8fd2-452b-b7ee-8ade21ab9c04-reference-edit-1784603103654.png",
+        "url": "/generated/4da775e5-8fd2-452b-b7ee-8ade21ab9c04-reference-edit-1784603103654.png",
+        "content": "Stylized 3D Tiny Troy entering a bright Nissan showroom, cinematic lighting, original family-friendly animated-film quality.\n\nCONTINUITY LOCK FOR TINY TROY: Identity: Warm brown skin, large brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, brown fedora. Wardrobe: Polished branded outfit suitable for the scene. Proportions: Stylized compact mascot proportions with a slightly oversized head and expressive eyes. Preserve exactly: Face shape, skin tone, beard shape, hairstyle, fedora, eye color, body proportions, and overall character identity. Restrictions: Do not change age, ethnicity, facial structure, beard style, eye color, or signature hat. No duplicate limbs, distorted hands, extra fingers, warped face, text artifacts, or inconsistent clothing details.",
+        "finalPrompt": "CHARACTER CONTINUITY LOCK — Tiny Troy V1.0\nAppearance: Polished stylized 3D caricature with warm brown skin, large expressive brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, and a brown fedora.\nWardrobe: Clean modern automotive-sales outfit; blue or neutral top unless the project specifies otherwise.\nPersonality: Confident, approachable, energetic, trustworthy, and family-friendly.\nContinuity rules:\n- Keep the full black beard and mustache\n- Keep the brown fedora\n- Keep warm brown skin and large brown eyes\n- Do not redesign facial proportions between scenes\n- Keep wardrobe consistent across one project\nShot type: cinematic.\nScene request: Stylized 3D Tiny Troy entering a bright Nissan showroom, cinematic lighting, original family-friendly animated-film quality.\n\nCONTINUITY LOCK FOR TINY TROY: Identity: Warm brown skin, large brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, brown fedora. Wardrobe: Polished branded outfit suitable for the scene. Proportions: Stylized compact mascot proportions with a slightly oversized head and expressive eyes. Preserve exactly: Face shape, skin tone, beard shape, hairstyle, fedora, eye color, body proportions, and overall character identity. Restrictions: Do not change age, ethnicity, facial structure, beard style, eye color, or signature hat. No duplicate limbs, distorted hands, extra fingers, warped face, text artifacts, or inconsistent clothing details.\nNegative constraints: No child version, no clean-shaven face, no missing fedora, no different ethnicity, no distorted hands, no malformed logos, no duplicate limbs, no text gibberish.\nMaintain the registered identity. Do not redesign the character.",
+        "characterId": "tiny-troy",
+        "characterVersion": "1.0",
+        "shotType": "cinematic",
+        "mode": "hybrid",
+        "sourceAssetId": "e325aba6-7a2a-4ba5-b706-b2dcb55b8959",
+        "sourceAssetUrl": "/uploads/e325aba6-7a2a-4ba5-b706-b2dcb55b8959.png",
+        "provider": "OpenAI",
+        "model": "gpt-image-1",
+        "createdAt": "2026-07-21T03:05:03.667Z",
+        "approvalStatus": "needs-review"
+      }
+    ],
+    "runtime": {
+      "status": "package-complete",
+      "currentStage": "complete",
+      "stages": [
+        {
+          "id": "crew",
+          "name": "Crew Assembly",
+          "worker": "Studio Director AI",
+          "required": [],
+          "status": "complete"
+        },
+        {
+          "id": "story",
+          "name": "Story Package",
+          "worker": "Story AI",
+          "required": [
+            "creative-brief",
+            "script",
+            "storyboard"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "character",
+          "name": "Character Continuity",
+          "worker": "Character Continuity AI",
+          "required": [
+            "character"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "visuals",
+          "name": "Visual Direction",
+          "worker": "Illustration AI",
+          "required": [
+            "image-prompts"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "voice",
+          "name": "Voice Direction",
+          "worker": "Voice AI",
+          "required": [
+            "audio-direction"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "video",
+          "name": "Video Assembly Plan",
+          "worker": "Video Assembly AI",
+          "required": [
+            "video-plan"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "quality",
+          "name": "Evidence Review",
+          "worker": "Evidence Quality AI",
+          "required": [
+            "qa"
+          ],
+          "status": "complete"
+        }
+      ],
+      "evidence": {
+        "requiredArtifacts": 8,
+        "verifiedArtifacts": 8,
+        "releaseApproved": true,
+        "finalMediaRendered": false
+      }
+    },
+    "executedAt": "2026-07-21T03:02:21.975Z"
+  },
+  {
+    "id": "ca84ded4-6764-4eaf-bf16-63344dc42b03",
+    "idea": "Tiny Troy sale you a car",
+    "createdAt": "2026-07-21T01:43:04.420Z",
+    "crewPlan": {
+      "status": "planned",
+      "requiredCapabilities": [
+        "project-planning",
+        "crew-assembly",
+        "workflow-routing",
+        "artifact-verification",
+        "release-validation",
+        "character-design",
+        "brand-consistency"
+      ],
+      "crew": [
+        {
+          "id": "studio-director",
+          "name": "Studio Director AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "project-planning",
+            "crew-assembly",
+            "workflow-routing"
+          ],
+          "ready": true
+        },
+        {
+          "id": "character-ai",
+          "name": "Character Continuity AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "character-design",
+            "brand-consistency"
+          ],
+          "ready": true
+        },
+        {
+          "id": "quality-ai",
+          "name": "Evidence Quality AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "artifact-verification",
+            "release-validation"
+          ],
+          "ready": true
+        }
+      ],
+      "executionPlan": {
+        "idea": "Tiny Troy sale you a car",
+        "steps": [
+          {
+            "order": 1,
+            "workerId": "studio-director",
+            "worker": "Studio Director AI",
+            "job": "Interpret the idea, define the deliverables, and coordinate the crew.",
+            "status": "ready"
+          },
+          {
+            "order": 2,
+            "workerId": "character-ai",
+            "worker": "Character Continuity AI",
+            "job": "Protect character identity and brand consistency.",
+            "status": "ready"
+          },
+          {
+            "order": 3,
+            "workerId": "quality-ai",
+            "worker": "Evidence Quality AI",
+            "job": "Verify artifacts, record evidence, and approve or block release.",
+            "status": "ready"
+          }
+        ],
+        "releaseRule": "The project cannot be marked complete until Evidence Quality AI verifies the required artifacts."
+      },
+      "evidence": {
+        "workerRegistryLoaded": true,
+        "workersConsidered": 7,
+        "workersSelected": 3
+      }
+    },
+    "title": "New Dream",
+    "status": "production-package-ready",
+    "releaseLevel": "Verified production package — final media not rendered",
+    "workers": [
+      {
+        "name": "Studio Director AI",
+        "status": "complete",
+        "output": "Creative brief"
+      },
+      {
+        "name": "Story Architect AI",
+        "status": "complete",
+        "output": "30-second script"
+      },
+      {
+        "name": "Storyboard AI",
+        "status": "complete",
+        "output": "3-scene storyboard"
+      },
+      {
+        "name": "Character Continuity AI",
+        "status": "complete",
+        "output": "Tiny Troy continuity guide"
+      },
+      {
+        "name": "Image Director AI",
+        "status": "complete",
+        "output": "Generated scene image"
+      },
+      {
+        "name": "Video Assembly AI",
+        "status": "planned",
+        "output": "Video assembly plan complete; render provider still required"
+      },
+      {
+        "name": "Evidence QA AI",
+        "status": "complete",
+        "output": "Truthful release check"
+      }
+    ],
+    "artifacts": [
+      {
+        "type": "creative-brief",
+        "name": "creative_brief.md",
+        "content": "Create a premium Tiny Troy commercial from this idea:\n\nTiny Troy sale you a car"
+      },
+      {
+        "type": "script",
+        "name": "commercial_script.md",
+        "content": "Scene 1: Tiny Troy enters the showroom and speaks directly to drivers.\nScene 2: Vehicles transform around him while he explains the upgrade experience.\nScene 3: A customer receives keys and Tiny Troy delivers the call to action."
+      },
+      {
+        "type": "storyboard",
+        "name": "storyboard.json",
+        "content": "[\n  {\n    \"scene\": 1,\n    \"title\": \"Showroom Arrival\",\n    \"shot\": \"Wide-to-medium tracking shot\",\n    \"goal\": \"Introduce Tiny Troy and the dealership.\"\n  },\n  {\n    \"scene\": 2,\n    \"title\": \"Vehicle Transformation\",\n    \"shot\": \"Dynamic orbit with energetic transitions\",\n    \"goal\": \"Show options and excitement.\"\n  },\n  {\n    \"scene\": 3,\n    \"title\": \"Customer Payoff\",\n    \"shot\": \"Warm hero shot with keys\",\n    \"goal\": \"Deliver trust and CTA.\"\n  }\n]"
+      },
+      {
+        "type": "character",
+        "name": "tiny_troy_continuity.md",
+        "content": "Warm brown skin, large expressive brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, brown fedora, polished stylized 3D appearance, confident and approachable."
+      },
+      {
+        "type": "image-prompts",
+        "name": "scene_prompts.md",
+        "content": "Scene 1: Stylized 3D Tiny Troy entering a bright Nissan showroom, cinematic lighting, original family-friendly animated-film quality.\nScene 2: Tiny Troy snapping his fingers as vehicles transition around him, energetic camera movement, polished materials.\nScene 3: Tiny Troy handing keys to a smiling customer, warm emotional lighting, dealership branding handled accurately."
+      },
+      {
+        "type": "qa",
+        "name": "qa_report.md",
+        "content": "PASS: production package exists. BLOCKED: no newly generated images, voice track, music, or MP4. Do not mark final video complete."
+      },
+      {
+        "id": "7be33297-80a1-40d5-a77d-af1f6bc2a809",
+        "type": "image",
+        "name": "3329be3f-5485-469d-977f-1884ff9b12e8.png",
+        "url": "/uploads/3329be3f-5485-469d-977f-1884ff9b12e8.png",
+        "content": "Tiny Troy standing confidently in a bright modern showroom",
+        "finalPrompt": "CHARACTER CONTINUITY LOCK — Tiny Troy V1.0\nAppearance: Polished stylized 3D caricature with warm brown skin, large expressive brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, and a brown fedora.\nWardrobe: Clean modern automotive-sales outfit; blue or neutral top unless the project specifies otherwise.\nPersonality: Confident, approachable, energetic, trustworthy, and family-friendly.\nContinuity rules:\n- Keep the full black beard and mustache\n- Keep the brown fedora\n- Keep warm brown skin and large brown eyes\n- Do not redesign facial proportions between scenes\n- Keep wardrobe consistent across one project\nShot type: cinematic.\nScene request: Tiny Troy standing confidently in a bright modern showroom\nNegative constraints: No child version, no clean-shaven face, no missing fedora, no different ethnicity, no distorted hands, no malformed logos, no duplicate limbs, no text gibberish.\nMaintain the registered identity. Do not redesign the character.",
+        "characterId": "tiny-troy",
+        "characterVersion": "1.0",
+        "shotType": "cinematic",
+        "mode": "assets",
+        "sourceAssetId": "3329be3f-5485-469d-977f-1884ff9b12e8",
+        "sourceAssetUrl": "/uploads/3329be3f-5485-469d-977f-1884ff9b12e8.png",
+        "provider": "Owner asset",
+        "model": "gpt-image-1",
+        "createdAt": "2026-07-21T01:55:25.602Z",
+        "approvalStatus": "needs-review"
+      },
+      {
+        "type": "audio-direction",
+        "name": "voice_direction.md",
+        "content": "Voice: warm, confident, conversational, trustworthy. Pace: energetic but easy to understand. Music: modern and uplifting, kept below narration. Sound design: restrained transitions and one memorable payoff accent."
+      },
+      {
+        "type": "video-plan",
+        "name": "video_assembly_plan.json",
+        "content": "{\n  \"format\": \"30-second master\",\n  \"aspectRatios\": [\n    \"16:9\",\n    \"9:16\",\n    \"1:1\"\n  ],\n  \"timeline\": [\n    {\n      \"range\": \"0-5s\",\n      \"layer\": \"Hook + title\"\n    },\n    {\n      \"range\": \"5-18s\",\n      \"layer\": \"Main story + visual progression\"\n    },\n    {\n      \"range\": \"18-26s\",\n      \"layer\": \"Proof/payoff\"\n    },\n    {\n      \"range\": \"26-30s\",\n      \"layer\": \"CTA + logo/end card\"\n    }\n  ],\n  \"renderState\": \"planned-not-rendered\"\n}"
+      },
+      {
+        "id": "cf1619ba-b9ac-46e7-af42-3c271a0f41ba",
+        "type": "image",
+        "name": "ca84ded4-6764-4eaf-bf16-63344dc42b03-reference-edit-1784601424158.png",
+        "url": "/generated/ca84ded4-6764-4eaf-bf16-63344dc42b03-reference-edit-1784601424158.png",
+        "content": "Stylized 3D Tiny Troy entering a bright Nissan showroom, cinematic lighting, original family-friendly animated-film quality.",
+        "finalPrompt": "CHARACTER CONTINUITY LOCK — Tiny Troy V1.0\nAppearance: Polished stylized 3D caricature with warm brown skin, large expressive brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, and a brown fedora.\nWardrobe: Clean modern automotive-sales outfit; blue or neutral top unless the project specifies otherwise.\nPersonality: Confident, approachable, energetic, trustworthy, and family-friendly.\nContinuity rules:\n- Keep the full black beard and mustache\n- Keep the brown fedora\n- Keep warm brown skin and large brown eyes\n- Do not redesign facial proportions between scenes\n- Keep wardrobe consistent across one project\nShot type: cinematic.\nScene request: Stylized 3D Tiny Troy entering a bright Nissan showroom, cinematic lighting, original family-friendly animated-film quality.\nNegative constraints: No child version, no clean-shaven face, no missing fedora, no different ethnicity, no distorted hands, no malformed logos, no duplicate limbs, no text gibberish.\nMaintain the registered identity. Do not redesign the character.",
+        "characterId": "tiny-troy",
+        "characterVersion": "1.0",
+        "shotType": "cinematic",
+        "mode": "hybrid",
+        "sourceAssetId": "2ecb2b56-79ac-4a5b-87ed-01f9ce700fb4",
+        "sourceAssetUrl": "/uploads/2ecb2b56-79ac-4a5b-87ed-01f9ce700fb4.png",
+        "provider": "OpenAI",
+        "model": "gpt-image-1",
+        "createdAt": "2026-07-21T02:37:04.163Z",
+        "approvalStatus": "needs-review"
+      }
+    ],
+    "runtime": {
+      "status": "package-complete",
+      "currentStage": "complete",
+      "stages": [
+        {
+          "id": "crew",
+          "name": "Crew Assembly",
+          "worker": "Studio Director AI",
+          "required": [],
+          "status": "complete"
+        },
+        {
+          "id": "story",
+          "name": "Story Package",
+          "worker": "Story AI",
+          "required": [
+            "creative-brief",
+            "script",
+            "storyboard"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "character",
+          "name": "Character Continuity",
+          "worker": "Character Continuity AI",
+          "required": [
+            "character"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "visuals",
+          "name": "Visual Direction",
+          "worker": "Illustration AI",
+          "required": [
+            "image-prompts"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "voice",
+          "name": "Voice Direction",
+          "worker": "Voice AI",
+          "required": [
+            "audio-direction"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "video",
+          "name": "Video Assembly Plan",
+          "worker": "Video Assembly AI",
+          "required": [
+            "video-plan"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "quality",
+          "name": "Evidence Review",
+          "worker": "Evidence Quality AI",
+          "required": [
+            "qa"
+          ],
+          "status": "complete"
+        }
+      ],
+      "evidence": {
+        "requiredArtifacts": 8,
+        "verifiedArtifacts": 8,
+        "releaseApproved": true,
+        "finalMediaRendered": false
+      }
+    },
+    "executedAt": "2026-07-21T02:00:46.359Z"
+  },
+  {
+    "id": "46553970-3f04-40ce-9a97-1bd296d77579",
+    "idea": "Create a premium, ultra-realistic promotional poster for DriveListed, a modern automotive marketplace built for the next generation of buying and selling vehicles.\n\nThe design should feel like a billion-dollar technology company launch, combining the visual quality of Tesla, Apple, Porsche, and high-end automotive advertising.\n\nHeadline:\n\"BUY. SELL. DRIVE. ALL IN ONE PLACE.\"\n\nSubheadline:\n\"The smarter way to buy, sell, and discover vehicles with confidence.\"\n\nShow a dramatic hero vehicle in the foreground with cinematic lighting, reflections, and motion. Include multiple premium vehicles (sports car, pickup truck, SUV, luxury sedan) subtly in the background.\n\nDisplay realistic smartphone mockups showing the DriveListed app with:\n• Featured vehicle listings\n• Advanced search\n• Vehicle details\n• Favorites\n• Messaging buyers and sellers\n• Clean modern dark interface\n\nInclude feature icons with short labels:\n• Thousands of Listings\n• Smart Search\n• AI Vehicle Assistant\n• Verified Listings\n• Secure Transactions\n• Instant Messaging\n• Financing Options\n• Nationwide Marketplace\n\nShow statistics:\n100K+ Users\n50K+ Listings\n99.9% Platform Uptime\n\nUse a premium black, graphite, silver, white, and electric red color palette with subtle blue accent lighting.\n\nBackground should feature a futuristic city skyline at night with light trails, creating speed, innovation, and excitement.\n\nBottom call-to-action:\n\"DriveListed — Find Your Next Drive.\"\n\nProfessional typography, cinematic composition, glossy reflections, realistic shadows, award-winning advertising quality, Apple keynote aesthetic, no clutter, no cartoons, no clip art, no watermarks, no spelling mistakes, 8K ultra-detailed, photorealistic, magazine cover quality, designed to convert visitors into customers.",
+    "createdAt": "2026-07-18T04:11:38.962Z",
+    "crewPlan": {
+      "status": "planned",
+      "requiredCapabilities": [
+        "project-planning",
+        "crew-assembly",
+        "workflow-routing",
+        "artifact-verification",
+        "release-validation",
+        "creative-brief",
+        "script-writing",
+        "storyboard-planning",
+        "image-prompting",
+        "image-generation"
+      ],
+      "crew": [
+        {
+          "id": "studio-director",
+          "name": "Studio Director AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "project-planning",
+            "crew-assembly",
+            "workflow-routing"
+          ],
+          "ready": true
+        },
+        {
+          "id": "story-ai",
+          "name": "Story AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "creative-brief",
+            "script-writing",
+            "storyboard-planning"
+          ],
+          "ready": true
+        },
+        {
+          "id": "illustration-ai",
+          "name": "Illustration AI",
+          "health": "waiting-for-provider",
+          "matchedCapabilities": [
+            "image-prompting",
+            "image-generation"
+          ],
+          "ready": false
+        },
+        {
+          "id": "quality-ai",
+          "name": "Evidence Quality AI",
+          "health": "healthy",
+          "matchedCapabilities": [
+            "artifact-verification",
+            "release-validation"
+          ],
+          "ready": true
+        }
+      ],
+      "executionPlan": {
+        "idea": "Create a premium, ultra-realistic promotional poster for DriveListed, a modern automotive marketplace built for the next generation of buying and selling vehicles.\n\nThe design should feel like a billion-dollar technology company launch, combining the visual quality of Tesla, Apple, Porsche, and high-end automotive advertising.\n\nHeadline:\n\"BUY. SELL. DRIVE. ALL IN ONE PLACE.\"\n\nSubheadline:\n\"The smarter way to buy, sell, and discover vehicles with confidence.\"\n\nShow a dramatic hero vehicle in the foreground with cinematic lighting, reflections, and motion. Include multiple premium vehicles (sports car, pickup truck, SUV, luxury sedan) subtly in the background.\n\nDisplay realistic smartphone mockups showing the DriveListed app with:\n• Featured vehicle listings\n• Advanced search\n• Vehicle details\n• Favorites\n• Messaging buyers and sellers\n• Clean modern dark interface\n\nInclude feature icons with short labels:\n• Thousands of Listings\n• Smart Search\n• AI Vehicle Assistant\n• Verified Listings\n• Secure Transactions\n• Instant Messaging\n• Financing Options\n• Nationwide Marketplace\n\nShow statistics:\n100K+ Users\n50K+ Listings\n99.9% Platform Uptime\n\nUse a premium black, graphite, silver, white, and electric red color palette with subtle blue accent lighting.\n\nBackground should feature a futuristic city skyline at night with light trails, creating speed, innovation, and excitement.\n\nBottom call-to-action:\n\"DriveListed — Find Your Next Drive.\"\n\nProfessional typography, cinematic composition, glossy reflections, realistic shadows, award-winning advertising quality, Apple keynote aesthetic, no clutter, no cartoons, no clip art, no watermarks, no spelling mistakes, 8K ultra-detailed, photorealistic, magazine cover quality, designed to convert visitors into customers.",
+        "steps": [
+          {
+            "order": 1,
+            "workerId": "studio-director",
+            "worker": "Studio Director AI",
+            "job": "Interpret the idea, define the deliverables, and coordinate the crew.",
+            "status": "ready"
+          },
+          {
+            "order": 2,
+            "workerId": "story-ai",
+            "worker": "Story AI",
+            "job": "Create the brief, message, script, and production direction.",
+            "status": "ready"
+          },
+          {
+            "order": 3,
+            "workerId": "illustration-ai",
+            "worker": "Illustration AI",
+            "job": "Prepare and generate the required visual assets.",
+            "status": "waiting-for-provider"
+          },
+          {
+            "order": 4,
+            "workerId": "quality-ai",
+            "worker": "Evidence Quality AI",
+            "job": "Verify artifacts, record evidence, and approve or block release.",
+            "status": "ready"
+          }
+        ],
+        "releaseRule": "The project cannot be marked complete until Evidence Quality AI verifies the required artifacts."
+      },
+      "evidence": {
+        "workerRegistryLoaded": true,
+        "workersConsidered": 7,
+        "workersSelected": 4
+      }
+    },
+    "title": "New Dream",
+    "status": "production-package-ready",
+    "releaseLevel": "Verified production package — final media not rendered",
+    "workers": [
+      {
+        "name": "Studio Director AI",
+        "status": "complete",
+        "output": "Creative brief"
+      },
+      {
+        "name": "Story Architect AI",
+        "status": "complete",
+        "output": "30-second script"
+      },
+      {
+        "name": "Storyboard AI",
+        "status": "complete",
+        "output": "3-scene storyboard"
+      },
+      {
+        "name": "Character Continuity AI",
+        "status": "complete",
+        "output": "Tiny Troy continuity guide"
+      },
+      {
+        "name": "Image Director AI",
+        "status": "complete",
+        "output": "Generated scene image"
+      },
+      {
+        "name": "Video Assembly AI",
+        "status": "planned",
+        "output": "Video assembly plan complete; render provider still required"
+      },
+      {
+        "name": "Evidence QA AI",
+        "status": "complete",
+        "output": "Truthful release check"
+      }
+    ],
+    "artifacts": [
+      {
+        "type": "creative-brief",
+        "name": "creative_brief.md",
+        "content": "Create a premium Tiny Troy commercial from this idea:\n\nCreate a premium, ultra-realistic promotional poster for DriveListed, a modern automotive marketplace built for the next generation of buying and selling vehicles.\n\nThe design should feel like a billion-dollar technology company launch, combining the visual quality of Tesla, Apple, Porsche, and high-end automotive advertising.\n\nHeadline:\n\"BUY. SELL. DRIVE. ALL IN ONE PLACE.\"\n\nSubheadline:\n\"The smarter way to buy, sell, and discover vehicles with confidence.\"\n\nShow a dramatic hero vehicle in the foreground with cinematic lighting, reflections, and motion. Include multiple premium vehicles (sports car, pickup truck, SUV, luxury sedan) subtly in the background.\n\nDisplay realistic smartphone mockups showing the DriveListed app with:\n• Featured vehicle listings\n• Advanced search\n• Vehicle details\n• Favorites\n• Messaging buyers and sellers\n• Clean modern dark interface\n\nInclude feature icons with short labels:\n• Thousands of Listings\n• Smart Search\n• AI Vehicle Assistant\n• Verified Listings\n• Secure Transactions\n• Instant Messaging\n• Financing Options\n• Nationwide Marketplace\n\nShow statistics:\n100K+ Users\n50K+ Listings\n99.9% Platform Uptime\n\nUse a premium black, graphite, silver, white, and electric red color palette with subtle blue accent lighting.\n\nBackground should feature a futuristic city skyline at night with light trails, creating speed, innovation, and excitement.\n\nBottom call-to-action:\n\"DriveListed — Find Your Next Drive.\"\n\nProfessional typography, cinematic composition, glossy reflections, realistic shadows, award-winning advertising quality, Apple keynote aesthetic, no clutter, no cartoons, no clip art, no watermarks, no spelling mistakes, 8K ultra-detailed, photorealistic, magazine cover quality, designed to convert visitors into customers."
+      },
+      {
+        "type": "script",
+        "name": "commercial_script.md",
+        "content": "Scene 1: Tiny Troy enters the showroom and speaks directly to drivers.\nScene 2: Vehicles transform around him while he explains the upgrade experience.\nScene 3: A customer receives keys and Tiny Troy delivers the call to action."
+      },
+      {
+        "type": "storyboard",
+        "name": "storyboard.json",
+        "content": "[\n  {\n    \"scene\": 1,\n    \"title\": \"Showroom Arrival\",\n    \"shot\": \"Wide-to-medium tracking shot\",\n    \"goal\": \"Introduce Tiny Troy and the dealership.\"\n  },\n  {\n    \"scene\": 2,\n    \"title\": \"Vehicle Transformation\",\n    \"shot\": \"Dynamic orbit with energetic transitions\",\n    \"goal\": \"Show options and excitement.\"\n  },\n  {\n    \"scene\": 3,\n    \"title\": \"Customer Payoff\",\n    \"shot\": \"Warm hero shot with keys\",\n    \"goal\": \"Deliver trust and CTA.\"\n  }\n]"
+      },
+      {
+        "type": "character",
+        "name": "tiny_troy_continuity.md",
+        "content": "Warm brown skin, large expressive brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, brown fedora, polished stylized 3D appearance, confident and approachable."
+      },
+      {
+        "type": "image-prompts",
+        "name": "scene_prompts.md",
+        "content": "Scene 1: Stylized 3D Tiny Troy entering a bright Nissan showroom, cinematic lighting, original family-friendly animated-film quality.\nScene 2: Tiny Troy snapping his fingers as vehicles transition around him, energetic camera movement, polished materials.\nScene 3: Tiny Troy handing keys to a smiling customer, warm emotional lighting, dealership branding handled accurately."
+      },
+      {
+        "type": "qa",
+        "name": "qa_report.md",
+        "content": "PASS: production package exists. BLOCKED: no newly generated images, voice track, music, or MP4. Do not mark final video complete."
+      },
+      {
+        "type": "audio-direction",
+        "name": "voice_direction.md",
+        "content": "Voice: warm, confident, conversational, trustworthy. Pace: energetic but easy to understand. Music: modern and uplifting, kept below narration. Sound design: restrained transitions and one memorable payoff accent."
+      },
+      {
+        "type": "video-plan",
+        "name": "video_assembly_plan.json",
+        "content": "{\n  \"format\": \"30-second master\",\n  \"aspectRatios\": [\n    \"16:9\",\n    \"9:16\",\n    \"1:1\"\n  ],\n  \"timeline\": [\n    {\n      \"range\": \"0-5s\",\n      \"layer\": \"Hook + title\"\n    },\n    {\n      \"range\": \"5-18s\",\n      \"layer\": \"Main story + visual progression\"\n    },\n    {\n      \"range\": \"18-26s\",\n      \"layer\": \"Proof/payoff\"\n    },\n    {\n      \"range\": \"26-30s\",\n      \"layer\": \"CTA + logo/end card\"\n    }\n  ],\n  \"renderState\": \"planned-not-rendered\"\n}"
+      },
+      {
+        "type": "image",
+        "name": "46553970-3f04-40ce-9a97-1bd296d77579-1784347972602.png",
+        "url": "/generated/46553970-3f04-40ce-9a97-1bd296d77579-1784347972602.png",
+        "content": "Stylized 3D Tiny Troy entering a bright Nissan showroom, cinematic lighting, original family-friendly animated-film quality."
+      }
+    ],
+    "runtime": {
+      "status": "package-complete",
+      "currentStage": "complete",
+      "stages": [
+        {
+          "id": "crew",
+          "name": "Crew Assembly",
+          "worker": "Studio Director AI",
+          "required": [],
+          "status": "complete"
+        },
+        {
+          "id": "story",
+          "name": "Story Package",
+          "worker": "Story AI",
+          "required": [
+            "creative-brief",
+            "script",
+            "storyboard"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "character",
+          "name": "Character Continuity",
+          "worker": "Character Continuity AI",
+          "required": [
+            "character"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "visuals",
+          "name": "Visual Direction",
+          "worker": "Illustration AI",
+          "required": [
+            "image-prompts"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "voice",
+          "name": "Voice Direction",
+          "worker": "Voice AI",
+          "required": [
+            "audio-direction"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "video",
+          "name": "Video Assembly Plan",
+          "worker": "Video Assembly AI",
+          "required": [
+            "video-plan"
+          ],
+          "status": "complete"
+        },
+        {
+          "id": "quality",
+          "name": "Evidence Review",
+          "worker": "Evidence Quality AI",
+          "required": [
+            "qa"
+          ],
+          "status": "complete"
+        }
+      ],
+      "evidence": {
+        "requiredArtifacts": 8,
+        "verifiedArtifacts": 8,
+        "releaseApproved": true,
+        "finalMediaRendered": false
+      }
+    },
+    "executedAt": "2026-07-18T04:11:50.896Z"
+  }
+]

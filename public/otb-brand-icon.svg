@@ -1,0 +1,39 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="80" y1="60" x2="440" y2="460">
+      <stop stop-color="#C8FF68"/>
+      <stop offset=".5" stop-color="#36E6FF"/>
+      <stop offset="1" stop-color="#8D68FF"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000" flood-opacity=".45"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="13" flood-color="#36E6FF" flood-opacity=".3"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#glow)">
+    <path d="M96 236 256 320 416 236V392L256 476 96 392V236Z"
+      fill="#08111F" stroke="url(#g)" stroke-width="16" stroke-linejoin="round"/>
+    <path d="M96 236 256 320 416 236M256 320V476"
+      fill="none" stroke="url(#g)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <path d="M86 228 188 166 256 230 96 312 86 228Z"
+      fill="#13223A" stroke="url(#g)" stroke-width="16" stroke-linejoin="round"/>
+    <path d="M426 228 324 166 256 230 416 312 426 228Z"
+      fill="#13223A" stroke="url(#g)" stroke-width="16" stroke-linejoin="round"/>
+
+    <text x="256" y="182"
+      text-anchor="middle"
+      fill="#FFFFFF"
+      stroke="#FFFFFF"
+      stroke-width="2"
+      paint-order="stroke"
+      font-size="96"
+      font-family="Arial Black, Arial, Helvetica, sans-serif"
+      font-weight="900"
+      letter-spacing="-8">OTB</text>
+
+    <path d="M256 142V62" stroke="url(#g)" stroke-width="14" stroke-linecap="round"/>
+    <path d="m256 34 10 22 24 3-17 17 4 24-21-11-21 11 4-24-17-17 24-3 10-22Z" fill="url(#g)"/>
+  </g>
+</svg>

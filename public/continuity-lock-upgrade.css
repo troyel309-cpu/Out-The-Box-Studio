@@ -1,0 +1,61 @@
+.continuity-lock-upgrade{
+  margin:22px 0;
+  padding:20px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at top right,rgba(255,255,255,.08),transparent 38%),
+    rgba(10,14,24,.82);
+  box-shadow:0 16px 44px rgba(0,0,0,.22)
+}
+.cl-header{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+.cl-header h3{margin:0;font-size:1.35rem}
+.cl-header p{margin:5px 0 0;opacity:.7}
+.cl-eyebrow{font-size:.7rem!important;font-weight:800;letter-spacing:.15em;opacity:.58!important}
+.cl-title-row{display:flex;align-items:center;gap:10px}
+.cl-status-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:58px;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#fff;
+  color:#111;
+  font-size:.65rem;
+  font-weight:900;
+  letter-spacing:.08em
+}
+.cl-status-badge.is-off{background:rgba(255,255,255,.09);color:inherit}
+.cl-toggle{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;white-space:nowrap}
+.cl-toggle input{width:18px;height:18px}
+.cl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.cl-field{display:grid;gap:6px}
+.cl-field span{font-size:.78rem;font-weight:700;opacity:.75}
+.cl-field input,.cl-field textarea{
+  width:100%;
+  box-sizing:border-box;
+  padding:11px 12px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:10px;
+  background:rgba(255,255,255,.06);
+  color:inherit;
+  resize:vertical
+}
+.cl-span-2{grid-column:span 2}
+.cl-preview{padding:14px;border-radius:12px;background:rgba(255,255,255,.05)}
+.cl-preview p{margin:8px 0 0;line-height:1.55;opacity:.82}
+.cl-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.cl-actions button{
+  padding:11px 16px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  cursor:pointer
+}
+.cl-actions button:first-child{background:#fff;color:#111;font-weight:800}
+.cl-actions button:not(:first-child){background:rgba(255,255,255,.07);color:inherit}
+@media(max-width:720px){
+  .cl-header{flex-direction:column}
+  .cl-grid{grid-template-columns:1fr}
+  .cl-span-2{grid-column:span 1}
+}

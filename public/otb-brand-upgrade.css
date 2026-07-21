@@ -1,0 +1,95 @@
+/* ======================================================
+   OFFICIAL OTB BRAND UPGRADE
+   ====================================================== */
+
+.brand img{
+  width:76px!important;
+  height:76px!important;
+  content:url("/otb-brand-icon.svg")!important;
+  filter:drop-shadow(0 10px 24px rgba(54,230,255,.18));
+}
+
+.brand{
+  padding-top:1px!important;
+  padding-bottom:24px!important;
+}
+
+.brand strong{
+  font-size:.96rem!important;
+  letter-spacing:-.025em;
+}
+
+.welcome-art{
+  min-height:390px;
+}
+
+.welcome-art img{
+  width:min(460px,96%)!important;
+  content:url("/otb-brand-hero.svg")!important;
+  animation:officialBrandFloat 5.6s ease-in-out infinite!important;
+  filter:drop-shadow(0 0 34px rgba(54,230,255,.22));
+}
+
+.art-glow{
+  width:460px!important;
+  height:460px!important;
+  background:
+    radial-gradient(circle,
+      rgba(255,255,255,.22) 0,
+      rgba(54,230,255,.16) 22%,
+      rgba(141,104,255,.08) 48%,
+      transparent 70%)!important;
+}
+
+.empty-state img{
+  content:url("/otb-brand-icon.svg")!important;
+}
+
+.project-thumb img[src="/otb-v2-logo.svg"]{
+  content:url("/otb-brand-icon.svg")!important;
+  object-fit:contain!important;
+  width:42%!important;
+  height:42%!important;
+}
+
+@keyframes officialBrandFloat{
+  0%,100%{
+    transform:translateY(0) rotate(0deg);
+  }
+  50%{
+    transform:translateY(-13px) rotate(-1.2deg);
+  }
+}
+
+.welcome-card{
+  grid-template-columns:minmax(0,1.04fr) minmax(330px,.96fr)!important;
+}
+
+.welcome-copy h1{
+  max-width:690px;
+}
+
+@media(max-width:950px){
+  .welcome-art{
+    min-height:310px;
+  }
+
+  .welcome-art img{
+    width:min(360px,90%)!important;
+  }
+}
+
+@media(max-width:800px){
+  .welcome-art{
+    display:grid!important;
+    min-height:250px;
+  }
+
+  .welcome-art img{
+    width:250px!important;
+  }
+
+  .welcome-card{
+    grid-template-columns:1fr!important;
+  }
+}

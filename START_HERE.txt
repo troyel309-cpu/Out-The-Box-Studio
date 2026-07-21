@@ -1,0 +1,10 @@
+OUT THE BOX STUDIO V5.2.1
+
+1. Double-click START_OUT_THE_BOX.command
+2. Paste your NEW OpenAI API key when asked
+3. Keep the Terminal window open
+4. The studio opens automatically
+
+If it does not open, double-click RESET_AND_START.command.
+
+Do not type the folder path into Terminal by itself. A folder is not an executable command.

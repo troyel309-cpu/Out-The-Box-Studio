@@ -1,0 +1,82 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="edge" x1="170" y1="130" x2="1030" y2="1030" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C8FF68"/>
+      <stop offset=".45" stop-color="#36E6FF"/>
+      <stop offset="1" stop-color="#8D68FF"/>
+    </linearGradient>
+
+    <linearGradient id="front" x1="300" y1="500" x2="730" y2="1050" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#132544"/>
+      <stop offset="1" stop-color="#07101C"/>
+    </linearGradient>
+
+    <linearGradient id="lid" x1="240" y1="310" x2="970" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#172C4E"/>
+      <stop offset="1" stop-color="#0A1120"/>
+    </linearGradient>
+
+    <radialGradient id="burst" cx="0" cy="0" r="1" gradientTransform="translate(600 470) rotate(90) scale(420)">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".12" stop-color="#E7FFF8"/>
+      <stop offset=".34" stop-color="#7CF6FF" stop-opacity=".95"/>
+      <stop offset=".62" stop-color="#4BDAFF" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#4BDAFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="letters" x1="390" y1="160" x2="820" y2="600">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".45" stop-color="#F6FFF0"/>
+      <stop offset="1" stop-color="#B8D7FF"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="34" stdDeviation="36" flood-color="#000000" flood-opacity=".5"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="28" flood-color="#36E6FF" flood-opacity=".34"/>
+    </filter>
+
+    <filter id="letterShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#000000" flood-opacity=".65"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#C8FF68" flood-opacity=".32"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <ellipse cx="600" cy="1030" rx="370" ry="80" fill="#000" opacity=".42"/>
+
+    <path d="M218 572 600 770 982 572V930L600 1128 218 930V572Z"
+      fill="url(#front)" stroke="url(#edge)" stroke-width="24" stroke-linejoin="round"/>
+
+    <path d="M218 572 600 770 982 572M600 770V1128"
+      fill="none" stroke="url(#edge)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <path d="M196 552 430 410 600 566 218 764 196 552Z"
+      fill="url(#lid)" stroke="url(#edge)" stroke-width="24" stroke-linejoin="round"/>
+
+    <path d="M1004 552 770 410 600 566 982 764 1004 552Z"
+      fill="url(#lid)" stroke="url(#edge)" stroke-width="24" stroke-linejoin="round"/>
+
+    <path d="M600 584 420 250 600 112 780 250 600 584Z"
+      fill="url(#burst)" opacity=".95"/>
+
+    <path d="M600 560V170M430 500 290 320M770 500 910 320M358 610 186 526M842 610 1014 526"
+      stroke="url(#edge)" stroke-width="20" stroke-linecap="round" opacity=".78"/>
+
+    <g filter="url(#letterShadow)">
+      <text x="600" y="360"
+        text-anchor="middle"
+        fill="url(#letters)"
+        stroke="#FFFFFF"
+        stroke-width="5"
+        paint-order="stroke"
+        font-size="290"
+        font-family="Arial Black, Arial, Helvetica, sans-serif"
+        font-weight="900"
+        letter-spacing="-24">OTB</text>
+    </g>
+
+    <path d="m970 190 16 48 48 16-48 16-16 48-16-48-48-16 48-16 16-48Z" fill="#C8FF68"/>
+    <path d="m214 334 11 33 33 11-33 11-11 33-11-33-33-11 33-11 11-33Z" fill="#36E6FF"/>
+    <path d="m862 394 10 30 30 10-30 10-10 30-10-30-30-10 30-10 10-30Z" fill="#8D68FF"/>
+  </g>
+</svg>

@@ -1,0 +1,334 @@
+======================================================
+ OUT THE BOX STUDIOS — API PROBE
+======================================================
+Created: Mon Jul 20 19:42:16 CDT 2026
+Project: /Users/troycampbell/Downloads/OpenAI_Challenge_Submission_20260720-193318/Out_the_Box_Studio_App_V4_2_Reliable_Uploads
+
+------------------------------------------------------
+GET http://localhost:3000/api/characters
+------------------------------------------------------
+HTTP STATUS: 200
+HEADERS:
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 145
+ETag: W/"91-35R6YbTPHeTcL/5YYs1vAAdPU3o"
+Date: Tue, 21 Jul 2026 00:42:16 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+BODY:
+{"ok":true,"characters":[{"id":"tiny-troy","subject":"Tiny Troy","source":"data/characters/tiny-troy.json","aliases":["tiny troy","tiny troy"]}]}
+
+------------------------------------------------------
+GET http://localhost:3000/api/assets
+------------------------------------------------------
+HTTP STATUS: 404
+HEADERS:
+HTTP/1.1 404 Not Found
+X-Powered-By: Express
+Content-Security-Policy: default-src 'none'
+X-Content-Type-Options: nosniff
+Content-Type: text/html; charset=utf-8
+Content-Length: 149
+Date: Tue, 21 Jul 2026 00:42:16 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+BODY:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot GET /api/assets</pre>
+</body>
+</html>
+
+
+------------------------------------------------------
+GET http://localhost:3000/api/projects
+------------------------------------------------------
+HTTP STATUS: 200
+HEADERS:
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 2244
+ETag: W/"8c4-jGhrr+1uVgugYpgI4zp4SaK8hUE"
+Date: Tue, 21 Jul 2026 00:42:16 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+BODY:
+{"ok":true,"projects":[{"ok":true,"id":"delivery-v5-test-20260720-023814","title":"Delivery Workspace Test","idea":"Verify the reusable project workspace and real export files.","hook":"Verify the reusable project workspace and real export files.","status":"built","evidenceStatus":"Built and locally verified","createdAt":"2026-07-20T07:38:18.428Z","updatedAt":"2026-07-20T07:39:12.256Z","generator":"Out the Box Delivery Workspace V5","artifacts":[{"id":"artwork","type":"image","name":"Concept Artwork","description":"Finished campaign artwork","url":"/projects/delivery-v5-test-20260720-023814/files/concept-art.svg","filename":"concept-art.svg"},{"id":"website","type":"website","name":"Website Preview","description":"Interactive responsive preview","url":"/projects/delivery-v5-test-20260720-023814/files/website-preview.html","filename":"website-preview.html"},{"id":"brief","type":"document","name":"Production Brief","description":"Creative direction and production plan","url":"/projects/delivery-v5-test-20260720-023814/files/production-brief.md","filename":"production-brief.md"},{"id":"social","type":"copy","name":"Social Campaign Copy","description":"Ready-to-post campaign copy","url":"/projects/delivery-v5-test-20260720-023814/files/social-campaign.txt","filename":"social-campaign.txt"},{"id":"video","type":"script","name":"Short Video Script","description":"30–45 second vertical video script","url":"/projects/delivery-v5-test-20260720-023814/files/short-video-script.txt","filename":"short-video-script.txt"},{"id":"storyboard","type":"document","name":"Storyboard","description":"Five-scene production map","url":"/projects/delivery-v5-test-20260720-023814/files/storyboard.md","filename":"storyboard.md"},{"id":"manifest","type":"evidence","name":"Evidence Manifest","description":"File-level production evidence","url":"/projects/delivery-v5-test-20260720-023814/files/evidence-manifest.json","filename":"evidence-manifest.json"},{"id":"package","type":"package","name":"Complete Project Package","description":"Every deliverable in one export","url":"/projects/delivery-v5-test-20260720-023814/files/delivery-workspace-test-complete-package.tar.gz","filename":"delivery-workspace-test-complete-package.tar.gz"}]}]}
+
+------------------------------------------------------
+POST http://localhost:3000/api/projects
+------------------------------------------------------
+HTTP STATUS: 200
+HEADERS:
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 2217
+ETag: W/"8a9-rLm8KlwbI86FyC2KWFGLJR19Bms"
+Date: Tue, 21 Jul 2026 00:42:16 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+BODY:
+{"ok":true,"project":{"ok":true,"id":"4f80ed68-10e0-4763-b92c-7d4ccf21fc94","title":"Untitled Production","idea":"OpenAI Challenge API diagnostic test","hook":"OpenAI Challenge API diagnostic test","status":"built","evidenceStatus":"Built and locally verified","createdAt":"2026-07-21T00:42:16.849Z","updatedAt":"2026-07-21T00:42:16.862Z","generator":"Out the Box Delivery Workspace V5","artifacts":[{"id":"artwork","type":"image","name":"Concept Artwork","description":"Finished campaign artwork","url":"/projects/4f80ed68-10e0-4763-b92c-7d4ccf21fc94/files/concept-art.svg","filename":"concept-art.svg"},{"id":"website","type":"website","name":"Website Preview","description":"Interactive responsive preview","url":"/projects/4f80ed68-10e0-4763-b92c-7d4ccf21fc94/files/website-preview.html","filename":"website-preview.html"},{"id":"brief","type":"document","name":"Production Brief","description":"Creative direction and production plan","url":"/projects/4f80ed68-10e0-4763-b92c-7d4ccf21fc94/files/production-brief.md","filename":"production-brief.md"},{"id":"social","type":"copy","name":"Social Campaign Copy","description":"Ready-to-post campaign copy","url":"/projects/4f80ed68-10e0-4763-b92c-7d4ccf21fc94/files/social-campaign.txt","filename":"social-campaign.txt"},{"id":"video","type":"script","name":"Short Video Script","description":"30–45 second vertical video script","url":"/projects/4f80ed68-10e0-4763-b92c-7d4ccf21fc94/files/short-video-script.txt","filename":"short-video-script.txt"},{"id":"storyboard","type":"document","name":"Storyboard","description":"Five-scene production map","url":"/projects/4f80ed68-10e0-4763-b92c-7d4ccf21fc94/files/storyboard.md","filename":"storyboard.md"},{"id":"manifest","type":"evidence","name":"Evidence Manifest","description":"File-level production evidence","url":"/projects/4f80ed68-10e0-4763-b92c-7d4ccf21fc94/files/evidence-manifest.json","filename":"evidence-manifest.json"},{"id":"package","type":"package","name":"Complete Project Package","description":"Every deliverable in one export","url":"/projects/4f80ed68-10e0-4763-b92c-7d4ccf21fc94/files/untitled-production-complete-package.tar.gz","filename":"untitled-production-complete-package.tar.gz"}]}}
+
+======================================================
+ SERVER ROUTING CLUES
+======================================================
+506:const server = http.createServer(async (req, res) => {
+508:    const url = new URL(req.url, `http://${req.headers.host}`);
+510:    if (req.method === "GET" && url.pathname === "/api/projects") {
+514:    if (req.method === "GET" && url.pathname === "/api/workers") {
+518:    if (req.method === "GET" && url.pathname === "/api/characters") {
+523:    if (req.method === "GET" && url.pathname === "/api/assets") {
+528:    if (req.method === "POST" && url.pathname === "/api/assets/upload") {
+558:    if (req.method === "POST" && url.pathname === "/api/assets") {
+584:    if (req.method === "DELETE" && url.pathname.match(/^\/api\/assets\/[^/]+$/)) {
+585:      const id = url.pathname.split("/")[3];
+594:    if (req.method === "POST" && url.pathname === "/api/crew/plan") {
+624:    if (req.method === "POST" && url.pathname === "/api/projects") {
+657:    if (req.method === "POST" && url.pathname.match(/^\/api\/projects\/[^/]+\/execute$/)) {
+658:      const id = url.pathname.split("/")[3];
+667:    if (req.method === "POST" && url.pathname.match(/^\/api\/projects\/[^/]+\/image$/)) {
+668:      const id = url.pathname.split("/")[3];
+700:    if (req.method === "DELETE" && url.pathname.match(/^\/api\/projects\/[^/]+$/)) {
+701:      const id = url.pathname.split("/")[3];
+707:    let filePath = url.pathname === "/" ? join(PUBLIC, "index.html") : join(PUBLIC, normalize(url.pathname));
+
+======================================================
+ FRONTEND ERROR HANDLING
+======================================================
+const $ = s => document.querySelector(s);
+let currentProject = null;
+let eventLog = [];
+
+async function api(path, options={}) {
+  const headers = new Headers(options.headers || {});
+  if (options.body && typeof options.body === "string" && !headers.has("Content-Type")) {
+    headers.set("Content-Type", "application/json");
+  }
+  const r = await fetch(path, { ...options, headers });
+  const text = await r.text();
+  let data = {};
+  try { data = text ? JSON.parse(text) : {}; } catch { data = { error: text || `HTTP ${r.status}` }; }
+  if (!r.ok) throw new Error(data.error || `Request failed (${r.status})`);
+  return data;
+}
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+const label=v=>String(v??"").replaceAll("-"," ");
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+
+function addEvent(message, state="done") {
+  eventLog.unshift({time:new Date(),message,state});
+  $("#eventTimeline").innerHTML = eventLog.map(e=>`<div class="event-row ${e.state}"><time>${e.time.toLocaleTimeString([], {hour:'numeric',minute:'2-digit',second:'2-digit'})}</time><span>${esc(e.message)}</span></div>`).join("");
+}
+
+function showCrewPlan(plan={}) {
+  const p={requiredCapabilities:[],crew:[],executionPlan:{steps:[],releaseRule:"Evidence review required."},evidence:{},...plan};
+  $("#planStatus").textContent=label(p.status||"planned");
+  const ev=p.evidence||{};
+  $("#evidenceSummary").innerHTML=`<div class="evidence-card"><strong>${ev.workerRegistryLoaded?"YES":"NO"}</strong><small>Registry loaded</small></div><div class="evidence-card"><strong>${ev.workersConsidered??0}</strong><small>Workers considered</small></div><div class="evidence-card"><strong>${ev.workersSelected??0}</strong><small>Workers selected</small></div>`;
+  $("#capabilities").innerHTML=(p.requiredCapabilities||[]).map(c=>`<span class="chip">${esc(label(c))}</span>`).join("")||`<span class="chip">No capabilities recorded</span>`;
+  $("#releaseRule").textContent=p.executionPlan?.releaseRule||"Evidence review is required before final release.";
+  $("#crew").innerHTML=(p.crew||[]).map(w=>`<div class="crew-card"><div><strong>${esc(w.name)}</strong><div class="cap-list">${(w.matchedCapabilities||[]).map(label).join(" • ")}</div></div><span class="health ${w.ready?"ready":"waiting"}">${w.ready?"Ready":esc(label(w.health))}</span></div>`).join("")||`<p>No crew selected.</p>`;
+  $("#dependencies").innerHTML=(p.executionPlan?.steps||[]).map((s,i)=>`<div class="dependency-card"><strong>${esc(s.worker)}</strong><small>${i===0?"Starts immediately":`Waits for ${esc(p.executionPlan.steps[i-1].worker)}`}</small><span>${esc(label(s.status))}</span></div>`).join("")||`<p>No dependencies recorded.</p>`;
+}
+
+function truthState(project) {
+  const types=new Set((project.artifacts||[]).map(a=>a.type));
+  const realImage=(project.artifacts||[]).some(a=>a.type==="image"&&a.url);
+  const realAudio=(project.artifacts||[]).some(a=>a.type==="audio"&&a.url);
+  const realVideo=(project.artifacts||[]).some(a=>a.type==="video"&&a.url);
+  const planning=["creative-brief","script","storyboard","character","image-prompts","audio-direction","video-plan","qa"].filter(t=>types.has(t)).length;
+  return [
+    {name:"Planning package",value:planning,of:8,state:planning===8?"verified":"working"},
+    {name:"Generated images",value:realImage?1:0,of:1,state:realImage?"verified":"provider"},
+    {name:"Generated narration",value:realAudio?1:0,of:1,state:realAudio?"verified":"provider"},
+    {name:"Rendered video",value:realVideo?1:0,of:1,state:realVideo?"verified":"provider"},
+    {name:"Final media release",value:realVideo?1:0,of:1,state:realVideo?"verified":"blocked"}
+  ];
+}
+function renderTruth(project){
+  const states=truthState(project); const mediaReady=states[3].value===1;
+  $("#truthBadge").textContent=mediaReady?"FINAL MEDIA VERIFIED":states[0].value===8?"PACKAGE VERIFIED":"IN PRODUCTION";
+  $("#truthDashboard").innerHTML=states.map(s=>{const pct=Math.round((s.value/s.of)*100);return `<div class="truth-card ${s.state}"><div><strong>${esc(s.name)}</strong><span>${s.state==="provider"?"Waiting for provider":s.state==="blocked"?"Blocked":s.state==="verified"?"Verified":"Working"}</span></div><div class="meter"><i style="width:${pct}%"></i></div><small>${pct}%</small></div>`}).join("");
+}
+
+function stageTemplate(stage,index){return `<div class="runtime-stage ${esc(stage.status)}" data-stage="${esc(stage.id)}"><span class="stage-icon">${stage.status==="complete"?"✓":index+1}</span><div><strong>${esc(stage.name)}</strong><p>${esc(stage.worker)}${stage.message?` — ${esc(stage.message)}`:""}</p><div class="stage-progress"><i style="width:${stage.progress||0}%"></i></div></div><span class="stage-state">${esc(label(stage.status))}</span></div>`}
+function showRuntime(runtime){
+  const s=runtime||{status:"not-run",stages:[]};
+  $("#runtimeBadge").textContent=label(s.status||"not-run");
+  $("#runtimeStages").innerHTML=(s.stages||[]).map(stageTemplate).join("")||`<p>Run live production to watch the crew create the package.</p>`;
+  const done=(s.stages||[]).filter(x=>x.status==="complete").length,total=(s.stages||[]).length||1;
+  $("#liveProgress span").style.width=`${Math.round(done/total*100)}%`;
+}
+
+function showProject(p){
+  currentProject=p; $("#workspace").classList.remove("hidden"); $("#title").textContent=p.title; $("#release").textContent=p.releaseLevel;
+  showCrewPlan(p.crewPlan); showRuntime(p.runtime); renderTruth(p);
+  $("#workers").innerHTML=(p.workers||[]).map(w=>`<div class="worker"><div><strong>${esc(w.name)}</strong><br><small>${esc(w.output||"")}</small></div><span class="status">${esc(label(w.status))}</span></div>`).join("");
+  $("#artifacts").innerHTML=(p.artifacts||[]).map((a,i)=>`<div class="artifact"><strong>${esc(a.name)}</strong><br><small>${esc(label(a.type))}</small>${a.url?`<img src="${esc(a.url)}" style="width:100%;border-radius:12px;margin-top:10px">`:`<button data-art="${i}">Open artifact</button><pre id="art-${i}" hidden>${esc(a.content||"")}</pre>`}</div>`).join("")||`<p>No artifacts yet.</p>`;
+  document.querySelectorAll("[data-art]").forEach(b=>b.onclick=()=>{const pre=$(`#art-${b.dataset.art}`);pre.hidden=!pre.hidden;b.textContent=pre.hidden?"Open artifact":"Close artifact"});
+  const imagePrompt=p.artifacts?.find(a=>a.type==="image-prompts"); if(imagePrompt) $("#imagePrompt").value=imagePrompt.content.split("\n")[0].replace(/^Scene 1[^:]*:\s*/,"");
+  $("#workspace").scrollIntoView({behavior:"smooth"});
+}
+
+async function animateProduction(){
+  const stages=[
+    ["crew","Crew Assembly","Studio Director AI","Matching capabilities to qualified workers"],
+    ["story","Story Package","Story AI","Writing the brief, script, and storyboard"],
+    ["character","Character Continuity","Character Continuity AI","Locking identity and brand rules"],
+    ["visuals","Visual Direction","Illustration AI","Preparing scene prompts; final images require provider"],
+    ["voice","Voice Direction","Voice AI","Preparing narration direction; audio requires provider"],
+    ["video","Video Assembly Plan","Video Assembly AI","Building timeline; rendered video requires provider"],
+    ["quality","Evidence Review","Evidence Quality AI","Verifying exactly what exists"]
+  ].map(([id,name,worker,message])=>({id,name,worker,message,status:"waiting",progress:0}));
+  $("#runtimeBadge").textContent="executing"; addEvent("Live production started","working");
+  for(let i=0;i<stages.length;i++){
+    stages[i].status="working"; addEvent(`${stages[i].worker} started ${stages[i].name}`,"working");
+    for(const pct of [18,42,68,88,100]){stages[i].progress=pct;showRuntime({status:"executing",stages});await wait(180)}
+    stages[i].status="complete"; showRuntime({status:"executing",stages}); addEvent(`${stages[i].name} completed`);
+  }
+}
+
+
+async function loadCharacters(){
+  characterRegistry=await api("/api/characters");
+  const select=$("#characterSelect");
+  select.innerHTML=characterRegistry.map(c=>`<option value="${esc(c.id)}">${esc(c.name)} — V${esc(c.version)}</option>`).join("");
+  const render=()=>{const c=characterRegistry.find(x=>x.id===select.value);$("#characterCard").innerHTML=c?`<strong>${esc(c.name)} continuity lock</strong><p>${esc(c.appearance)}</p><small>${(c.continuityRules||[]).map(esc).join(" • ")}</small>`:""};
+  select.onchange=render;render();
+}
+
+
+async function loadAssets(){
+  assetRegistry=await api("/api/assets");
+  const library=$("#assetLibrary");
+  library.innerHTML=assetRegistry.length?assetRegistry.map(a=>`<article class="asset-card ${a.officialReference?"official":""}"><img src="${esc(a.url)}" alt="${esc(a.name)}"><div><strong>${esc(a.name)}</strong><small>${esc(label(a.category))}${a.officialReference?" • Official reference":""}</small><button class="secondary" data-use-asset="${a.id}">Use in Image Lab</button><button class="danger-link" data-delete-asset="${a.id}">Delete</button></div></article>`).join(""):`<p>No uploaded assets yet.</p>`;
+  const select=$("#referenceAsset");
+  const selected=select.value;
+  select.innerHTML=`<option value="">Select uploaded picture</option>`+assetRegistry.map(a=>`<option value="${a.id}">${esc(a.name)}${a.officialReference?" — Official":""}</option>`).join("");
+  if(assetRegistry.some(a=>a.id===selected))select.value=selected;
+  document.querySelectorAll("[data-use-asset]").forEach(b=>b.onclick=()=>{select.value=b.dataset.useAsset;$("#productionMode").value="hybrid";updateModeHelp();$("#imagePrompt").focus();});
+  document.querySelectorAll("[data-delete-asset]").forEach(b=>b.onclick=async()=>{if(!confirm("Delete this studio asset?"))return;await api(`/api/assets/${b.dataset.deleteAsset}`,{method:"DELETE"});await loadAssets();});
+}
+
+function showUploadStatus(message, state="working") {
+  const box = $("#uploadStatus");
+  box.hidden = false;
+  box.className = `upload-status ${state}`;
+  box.textContent = message;
+}
+
+function previewSelectedAssets() {
+  const files = [...$("#assetFiles").files];
+  const preview = $("#assetPreview");
+  if (!files.length) {
+    preview.innerHTML = "";
+    showUploadStatus("Choose one or more pictures, then upload them.", "idle");
+    return;
+  }
+  preview.innerHTML = files.map(file => {
+    const url = URL.createObjectURL(file);
+    return `<div class="upload-preview-card"><img src="${url}" alt="${esc(file.name)}"><small>${esc(file.name)} • ${(file.size/1024/1024).toFixed(2)} MB</small></div>`;
+  }).join("");
+  showUploadStatus(`${files.length} picture${files.length===1?"":"s"} ready to upload.`, "ready");
+}
+
+async function uploadOneAsset(file) {
+  if (!['image/png','image/jpeg','image/webp'].includes(file.type)) {
+    throw new Error(`${file.name} is not a PNG, JPG, or WEBP image.`);
+  }
+  if (file.size > 15 * 1024 * 1024) throw new Error(`${file.name} is larger than 15 MB.`);
+  const params = new URLSearchParams({
+    name: file.name.replace(/\.[^.]+$/, "") || file.name,
+    originalName: file.name,
+    category: $("#assetCategory").value,
+    tags: $("#assetTags").value,
+    officialReference: String($("#officialReference").checked)
+  });
+  return api(`/api/assets/upload?${params.toString()}`, {
+    method: "POST",
+    headers: { "Content-Type": file.type },
+    body: file
+  });
+}
+
+async function uploadSelectedAssets(){
+  const files=[...$("#assetFiles").files];
+  if(!files.length){showUploadStatus("Choose at least one picture first.","error");return;}
+  const button=$("#uploadAssets");button.disabled=true;button.textContent="Uploading…";
+  try{
+    for(let index=0; index<files.length; index++){
+      showUploadStatus(`Uploading ${index+1} of ${files.length}: ${files[index].name}`,"working");
+      await uploadOneAsset(files[index]);
+    }
+    await loadAssets();
+    showUploadStatus(`${files.length} picture${files.length===1?"":"s"} added to the Studio Library.`,"success");
+    addEvent(`${files.length} owner asset${files.length===1?"":"s"} added to the Studio Library`);
+    $("#assetFiles").value="";
+    $("#assetPreview").innerHTML="";
+  }catch(e){
+    console.error("Upload failed",e);
+    showUploadStatus(`Upload failed: ${e.message}`,"error");
+  }finally{button.disabled=false;button.textContent="Upload to Studio Library";}
+}
+
+$("#assetFiles").addEventListener("change", previewSelectedAssets);
+
+function updateModeHelp(){
+  const mode=$("#productionMode").value;
+  const help={hybrid:"Hybrid uses your selected picture as the foundation and AI builds the requested scene around it.",assets:"My Picture Only attaches your uploaded picture to this production without changing it.",ai:"AI Only creates a new image without using an uploaded reference."};
+  $("#modeHelp").textContent=help[mode];
+  $("#referenceAsset").disabled=mode==="ai";
+  $("#generateImage").textContent=mode==="assets"?"Attach My Picture":mode==="hybrid"?"Build From My Picture":"Generate New AI Image";
+}
+
+$("#uploadAssets").onclick=uploadSelectedAssets;
+$("#refreshAssets").onclick=loadAssets;
+$("#productionMode").onchange=updateModeHelp;
+
+async function loadProjects(){
+  const projects=await api("/api/projects"); $("#mode").textContent="Studio ready";
+  $("#projects").innerHTML=projects.length?projects.map(p=>`<article class="project-card"><small>${new Date(p.createdAt).toLocaleString()}</small><h3>${esc(p.title)}</h3><p>${esc(p.releaseLevel)}</p><div class="row"><button data-open="${p.id}">Open</button><button class="secondary" data-delete="${p.id}">Delete</button></div></article>`).join(""):`<p>No dreams yet. Start with the box above.</p>`;
+  document.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>{eventLog=[];showProject(projects.find(p=>p.id===b.dataset.open));addEvent("Dream opened from library")});
+  document.querySelectorAll("[data-delete]").forEach(b=>b.onclick=async()=>{await api(`/api/projects/${b.dataset.delete}`,{method:"DELETE"});loadProjects()});
+}
+
+$("#build").onclick=async()=>{
+  const idea=$("#idea").value.trim(); if(!idea)return alert("Tell the studio what to build.");
+  $("#build").disabled=true;$("#build").textContent="Studio Director assembling…";$("#mode").textContent="Matching capabilities to workers";
+  try{eventLog=[];addEvent("Idea received");const p=await api("/api/projects",{method:"POST",body:JSON.stringify({idea})});showProject(p);addEvent("Qualified crew assembled");await loadProjects()}
+  catch(e){alert(e.message)}finally{$("#build").disabled=false;$("#build").textContent="Build My Dream";$("#mode").textContent="Studio ready"}
+};
+
+$("#runProduction").onclick=async()=>{
+  if(!currentProject)return alert("Open or create a project first."); const b=$("#runProduction");b.disabled=true;b.textContent="Crew working…";
+  try{await animateProduction();const p=await api(`/api/projects/${currentProject.id}/execute`,{method:"POST",body:"{}"});showProject(p);addEvent("Planning package verified; final media remains governed by provider evidence");await loadProjects()}
+  catch(e){addEvent(e.message,"error");alert(e.message)}finally{b.disabled=false;b.textContent="Run Live Production"}
+};
+
+$("#generateImage").onclick=async()=>{
+  if(!currentProject)return alert("Open or create a project first.");const prompt=$("#imagePrompt").value.trim();if(!prompt)return alert("Add a scene prompt.");
+  const b=$("#generateImage");b.disabled=true;b.textContent="Generating image…";addEvent("Continuity Engine locked the selected character","working");
+  try{const d=await api(`/api/projects/${currentProject.id}/image`,{method:"POST",body:JSON.stringify({prompt,characterId:$("#characterSelect").value,shotType:$("#shotType").value,mode:$("#productionMode").value,assetId:$("#referenceAsset").value||null})});$("#imageOutput").innerHTML=`<img src="${d.imageUrl}" alt="Generated scene">`;showProject(d.project);addEvent("Real generated image attached and verified");await loadProjects()}
+  catch(e){addEvent("Image generation blocked: provider not connected","error");alert(e.message)}finally{b.disabled=false;updateModeHelp()}
+};
+
+$("#newDream").onclick=()=>{window.scrollTo({top:0,behavior:"smooth"});$("#idea").focus()};$("#refresh").onclick=loadProjects;updateModeHelp();Promise.all([loadCharacters(),loadAssets(),loadProjects()]);
+
+======================================================
+ COMPLETE
+======================================================
+Report: /Users/troycampbell/Downloads/OpenAI_Challenge_Submission_20260720-193318/Out_the_Box_Studio_App_V4_2_Reliable_Uploads/API_PROBE.txt

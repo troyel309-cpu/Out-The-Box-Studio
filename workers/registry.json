@@ -1,0 +1,74 @@
+[
+  {
+    "id": "studio-director",
+    "name": "Studio Director AI",
+    "capabilities": [
+      "project-planning",
+      "crew-assembly",
+      "workflow-routing"
+    ],
+    "enabled": true,
+    "health": "healthy"
+  },
+  {
+    "id": "story-ai",
+    "name": "Story AI",
+    "capabilities": [
+      "creative-brief",
+      "script-writing",
+      "storyboard-planning"
+    ],
+    "enabled": true,
+    "health": "healthy"
+  },
+  {
+    "id": "illustration-ai",
+    "name": "Illustration AI",
+    "capabilities": [
+      "image-prompting",
+      "image-generation"
+    ],
+    "enabled": true,
+    "health": "waiting-for-provider"
+  },
+  {
+    "id": "character-ai",
+    "name": "Character Continuity AI",
+    "capabilities": [
+      "character-design",
+      "brand-consistency"
+    ],
+    "enabled": true,
+    "health": "healthy"
+  },
+  {
+    "id": "voice-ai",
+    "name": "Voice AI",
+    "capabilities": [
+      "voice-direction",
+      "speech-generation"
+    ],
+    "enabled": true,
+    "health": "waiting-for-provider"
+  },
+  {
+    "id": "video-ai",
+    "name": "Video Assembly AI",
+    "capabilities": [
+      "timeline-planning",
+      "video-rendering"
+    ],
+    "enabled": true,
+    "health": "waiting-for-provider"
+  },
+  {
+    "id": "quality-ai",
+    "name": "Evidence Quality AI",
+    "capabilities": [
+      "artifact-verification",
+      "release-validation"
+    ],
+    "enabled": true,
+    "health": "healthy"
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "tiny-troy",
+    "name": "Tiny Troy",
+    "version": "1.0",
+    "status": "approved",
+    "appearance": "Polished stylized 3D caricature with warm brown skin, large expressive brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, and a brown fedora.",
+    "wardrobe": "Clean modern automotive-sales outfit; blue or neutral top unless the project specifies otherwise.",
+    "personality": "Confident, approachable, energetic, trustworthy, and family-friendly.",
+    "continuityRules": [
+      "Keep the full black beard and mustache",
+      "Keep the brown fedora",
+      "Keep warm brown skin and large brown eyes",
+      "Do not redesign facial proportions between scenes",
+      "Keep wardrobe consistent across one project"
+    ],
+    "negativePrompt": "No child version, no clean-shaven face, no missing fedora, no different ethnicity, no distorted hands, no malformed logos, no duplicate limbs, no text gibberish."
+  },
+  {
+    "id": "speedy",
+    "name": "Speedy",
+    "version": "1.0",
+    "status": "candidate",
+    "appearance": "Small energetic helper mascot with a polished stylized 3D appearance and a fast, upbeat visual identity.",
+    "wardrobe": "Brand-coordinated helper outfit suited to the current project.",
+    "personality": "Quick, helpful, upbeat, and supportive.",
+    "continuityRules": [
+      "Maintain the same proportions and face",
+      "Keep colors consistent within a project",
+      "Do not replace Tiny Troy as the lead unless requested"
+    ],
+    "negativePrompt": "No frightening expression, no random costume changes, no duplicate limbs, no text gibberish."
+  }
+]

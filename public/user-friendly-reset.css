@@ -1,0 +1,301 @@
+/* ======================================================
+   OUT THE BOX STUDIO — USER-FRIENDLY RESET
+   ====================================================== */
+
+:root{
+  --friendly-green:#AFFF68;
+  --friendly-cyan:#38E7FF;
+  --friendly-panel:#0A1220;
+  --friendly-border:rgba(132,165,220,.14);
+}
+
+.rail-brand img{
+  width:118px!important;
+  height:118px!important;
+  content:url("/otb-simple-open-box.svg")!important;
+}
+
+.visual-box-stage>img,
+.render-orb img,
+.premium-cube img,
+.pulse-logo img{
+  content:url("/otb-simple-open-box.svg")!important;
+}
+
+.advanced-nav-item{
+  display:none!important;
+}
+
+.visual-rail-navigation.show-advanced .advanced-nav-item{
+  display:grid!important;
+}
+
+.more-tools-button{
+  margin-top:8px;
+  border-top:1px solid rgba(255,255,255,.05)!important;
+  border-radius:0 0 12px 12px!important;
+}
+
+.visual-hero-main{
+  grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr)!important;
+}
+
+.visual-hero-copy h2{
+  font-size:clamp(3rem,5vw,5.8rem)!important;
+}
+
+.visual-hero-copy p{
+  max-width:530px!important;
+  font-size:.92rem!important;
+}
+
+.advanced-studio-panel{
+  opacity:.96;
+}
+
+.simple-creation-steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin:0 0 12px;
+}
+
+.simple-step{
+  display:grid;
+  grid-template-columns:30px 1fr;
+  gap:8px;
+  align-items:center;
+  padding:10px;
+  border:1px solid var(--friendly-border);
+  border-radius:11px;
+  background:rgba(255,255,255,.02);
+  color:#718097;
+}
+
+.simple-step span{
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:#131D2D;
+  font-size:.62rem;
+  font-weight:900;
+}
+
+.simple-step strong{
+  font-size:.66rem;
+}
+
+.simple-step.active{
+  color:#FFFFFF;
+  border-color:rgba(56,231,255,.28);
+  background:rgba(56,231,255,.045);
+}
+
+.simple-step.active span{
+  color:#07100A;
+  background:linear-gradient(135deg,var(--friendly-green),var(--friendly-cyan));
+}
+
+.simple-step.complete{
+  color:var(--friendly-green);
+}
+
+.simple-step.complete span{
+  color:#07100A;
+  background:var(--friendly-green);
+}
+
+.friendly-dock{
+  padding:22px!important;
+}
+
+.friendly-dock .idea-dock-copy h2{
+  margin-bottom:14px!important;
+}
+
+#advancedOptionsToggle{
+  margin-top:10px;
+  padding:8px 10px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:9px;
+  background:rgba(255,255,255,.025);
+  color:#8D9AAF;
+  font-size:.62rem;
+}
+
+.friendly-controls{
+  grid-template-columns:1fr!important;
+}
+
+.friendly-controls select{
+  display:none;
+}
+
+.friendly-controls.show-options{
+  grid-template-columns:repeat(3,minmax(0,1fr)) auto!important;
+}
+
+.friendly-controls.show-options select{
+  display:block;
+}
+
+.friendly-controls:not(.show-options) #createDreamButton{
+  width:100%;
+  min-height:48px;
+  font-size:.9rem;
+}
+
+.friendly-pulse{
+  position:static!important;
+  width:auto!important;
+  margin:10px 0!important;
+  cursor:pointer;
+  overflow:hidden;
+}
+
+.friendly-pulse .visual-pulse-body,
+.friendly-pulse .visual-pulse-meta{
+  display:none!important;
+}
+
+.friendly-pulse.expanded .visual-pulse-body,
+.friendly-pulse.expanded .visual-pulse-meta{
+  display:grid!important;
+}
+
+.friendly-pulse:after{
+  content:"Tap to view studio activity";
+  color:#657289;
+  font-size:.52rem;
+}
+
+.friendly-pulse.expanded:after{
+  content:"Tap to collapse";
+}
+
+.friendly-advanced{
+  display:none!important;
+}
+
+body.show-friendly-advanced .friendly-advanced{
+  display:flex!important;
+}
+
+body.show-friendly-advanced .living-pipeline,
+body.show-friendly-advanced .visual-pipeline{
+  display:grid!important;
+}
+
+#showAdvancedExperience{
+  display:block;
+  width:100%;
+  margin:12px 0;
+  padding:10px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:10px;
+  background:rgba(255,255,255,.02);
+  color:#7F8CA0;
+  font-size:.64rem;
+}
+
+.friendly-guide{
+  position:fixed;
+  inset:0;
+  z-index:500;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:rgba(2,5,10,.82);
+  backdrop-filter:blur(14px);
+}
+
+.guide-card{
+  position:relative;
+  width:min(460px,94vw);
+  padding:28px;
+  border:1px solid rgba(56,231,255,.16);
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(56,231,255,.1),transparent 34%),
+    #09111E;
+  box-shadow:0 34px 90px rgba(0,0,0,.5);
+  text-align:center;
+}
+
+.guide-card>button:first-child{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:34px;
+  height:34px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;
+  background:rgba(255,255,255,.03);
+  font-size:1rem;
+}
+
+.guide-card img{
+  width:130px;
+  height:130px;
+}
+
+.guide-card p{
+  margin:8px 0 4px;
+  color:var(--friendly-green);
+  font-size:.58rem;
+  font-weight:900;
+  letter-spacing:.14em;
+}
+
+.guide-card h2{
+  margin:6px 0 10px;
+  font-size:1.7rem;
+}
+
+.guide-card span{
+  display:block;
+  color:#98A5B9;
+  line-height:1.55;
+  font-size:.78rem;
+}
+
+#startFriendlyGuide{
+  width:100%;
+  margin-top:20px;
+  padding:12px;
+  border:0;
+  border-radius:11px;
+  color:#07100A;
+  font-weight:900;
+  background:linear-gradient(90deg,var(--friendly-green),var(--friendly-cyan));
+}
+
+.project-card p{
+  min-height:2.2em;
+}
+
+@media(max-width:1100px){
+  .advanced-studio-panel{
+    display:none!important;
+  }
+
+  .visual-command-hero{
+    grid-template-columns:1fr!important;
+  }
+}
+
+@media(max-width:760px){
+  .simple-creation-steps{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .friendly-controls.show-options{
+    grid-template-columns:1fr!important;
+  }
+
+  .friendly-controls.show-options #createDreamButton{
+    width:100%;
+  }
+}

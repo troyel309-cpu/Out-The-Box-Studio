@@ -1,0 +1,75 @@
+Created: Mon Jul 20 19:40:50 CDT 2026
+Project: /Users/troycampbell/Downloads/OpenAI_Challenge_Submission_20260720-193318/Out_the_Box_Studio_App_V4_2_Reliable_Uploads
+
+=== REQUIRED FILES ===
+PASS  package.json
+PASS  server.js
+PASS  public/index.html
+PASS  public/app.js
+PASS  public/styles.css
+
+=== NODE / NPM ===
+Node: v24.18.0
+npm:  11.16.0
+
+=== PACKAGE SCRIPTS ===
+{
+  "start": "node server.js"
+}
+
+=== FRONTEND API CALLS ===
+10:  const r = await fetch(path, { ...options, headers });
+96:  characterRegistry=await api("/api/characters");
+105:  assetRegistry=await api("/api/assets");
+113:  document.querySelectorAll("[data-delete-asset]").forEach(b=>b.onclick=async()=>{if(!confirm("Delete this studio asset?"))return;await api(`/api/assets/${b.dataset.deleteAsset}`,{method:"DELETE"});await loadAssets();});
+150:  return api(`/api/assets/upload?${params.toString()}`, {
+192:  const projects=await api("/api/projects"); $("#mode").textContent="Studio ready";
+195:  document.querySelectorAll("[data-delete]").forEach(b=>b.onclick=async()=>{await api(`/api/projects/${b.dataset.delete}`,{method:"DELETE"});loadProjects()});
+201:  try{eventLog=[];addEvent("Idea received");const p=await api("/api/projects",{method:"POST",body:JSON.stringify({idea})});showProject(p);addEvent("Qualified crew assembled");await loadProjects()}
+207:  try{await animateProduction();const p=await api(`/api/projects/${currentProject.id}/execute`,{method:"POST",body:"{}"});showProject(p);addEvent("Planning package verified; final media remains governed by provider evidence");await loadProjects()}
+214:  try{const d=await api(`/api/projects/${currentProject.id}/image`,{method:"POST",body:JSON.stringify({prompt,characterId:$("#characterSelect").value,shotType:$("#shotType").value,mode:$("#productionMode").value,assetId:$("#referenceAsset").value||null})});$("#imageOutput").innerHTML=`<img src="${d.imageUrl}" alt="Generated scene">`;showProject(d.project);addEvent("Real generated image attached and verified");await loadProjects()}
+
+=== SERVER ROUTES ===
+WARN  No Express-style routes found in server.js
+
+=== REFERENCED LOCAL FILES ===
+PASS  public/app.js
+PASS  public/styles.css
+
+=== SERVER HEALTH ===
+PASS  http://localhost:3000 responds
+Home bytes: 7157
+
+=== JAVASCRIPT SYNTAX ===
+PASS  public/app.js syntax
+PASS  server.js syntax
+
+=== COMMON BREAKAGE CHECKS ===
+PASS  No hard-coded localhost API address found in public/app.js
+8:const PORT = process.env.PORT || 3000;
+17:const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "";
+260:      status: illustration.ready ? "ready" : "waiting-for-provider"
+270:      status: voice.ready ? "ready" : "waiting-for-provider"
+280:      status: video.ready ? "ready" : "waiting-for-provider"
+382:    if (worker.name.includes("Video")) return { ...worker, status: "planned", output: "Video assembly plan complete; render provider still required" };
+383:    if (worker.name.includes("Image")) return { ...worker, status: "planned", output: "Scene prompts complete; image provider optional" };
+427:      "Authorization": `Bearer ${OPENAI_API_KEY}`,
+431:      model: process.env.OPENAI_MODEL || "gpt-5",
+442:  if (!OPENAI_API_KEY) throw new Error("OPENAI_API_KEY is not configured.");
+446:      "Authorization": `Bearer ${OPENAI_API_KEY}`,
+450:      model: process.env.OPENAI_IMAGE_MODEL || "gpt-image-1",
+468:  if (!OPENAI_API_KEY) throw new Error("OPENAI_API_KEY is not configured.");
+473:  form.append("model", process.env.OPENAI_IMAGE_MODEL || "gpt-image-1");
+480:    headers: { "Authorization": `Bearer ${OPENAI_API_KEY}` },
+629:        production = OPENAI_API_KEY ? await runOpenAI(idea) : localCrew(idea);
+632:        production.releaseLevel += ` — AI provider fallback used: ${error.message}`;
+691:        sourceAssetUrl: sourceAsset?.url || null, provider: mode === "assets" ? "Owner asset" : "OpenAI",
+692:        model: process.env.OPENAI_IMAGE_MODEL || "gpt-image-1", createdAt: new Date().toISOString(),
+721:  console.log(OPENAI_API_KEY ? "AI provider: OpenAI connected" : "AI provider: local demo mode");
+INFO  Provider/environment references shown above
+
+======================================================
+ Diagnostic finished
+======================================================
+Report:
+/Users/troycampbell/Downloads/OpenAI_Challenge_Submission_20260720-193318/Out_the_Box_Studio_App_V4_2_Reliable_Uploads/FEATURE_DIAGNOSTIC.txt

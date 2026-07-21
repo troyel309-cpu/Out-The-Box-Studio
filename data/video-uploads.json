@@ -1,0 +1,38 @@
+[
+  {
+    "id": "6bb0a4ab-2f3d-465d-b1df-8b87e20a098e",
+    "kind": "image",
+    "filename": "Image.jpeg",
+    "mimeType": "image/jpeg",
+    "bytes": 216467,
+    "url": "/uploads/video-studio/6bb0a4ab-2f3d-465d-b1df-8b87e20a098e.jpeg",
+    "createdAt": "2026-07-21T06:19:03.228Z"
+  },
+  {
+    "id": "4e01ab91-10db-469a-a527-3380ef569bf4",
+    "kind": "image",
+    "filename": "Image.jpeg",
+    "mimeType": "image/jpeg",
+    "bytes": 216467,
+    "url": "/uploads/video-studio/4e01ab91-10db-469a-a527-3380ef569bf4.jpeg",
+    "createdAt": "2026-07-21T05:58:43.908Z"
+  },
+  {
+    "id": "dc6ca9ec-6696-441c-93e7-7209560805fc",
+    "kind": "image",
+    "filename": "Image.jpeg",
+    "mimeType": "image/jpeg",
+    "bytes": 216467,
+    "url": "/uploads/video-studio/dc6ca9ec-6696-441c-93e7-7209560805fc.jpeg",
+    "createdAt": "2026-07-21T05:38:47.281Z"
+  },
+  {
+    "id": "22dac573-8420-4125-a011-3d1e962d47ab",
+    "kind": "image",
+    "filename": "Image.jpeg",
+    "mimeType": "image/jpeg",
+    "bytes": 216467,
+    "url": "/uploads/video-studio/22dac573-8420-4125-a011-3d1e962d47ab.jpeg",
+    "createdAt": "2026-07-21T05:22:27.266Z"
+  }
+]

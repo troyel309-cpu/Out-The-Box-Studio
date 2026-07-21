@@ -1,0 +1,48 @@
+<svg width="720" height="720" viewBox="0 0 720 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="neon" x1="92" y1="70" x2="634" y2="650" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B7FF65"/>
+      <stop offset=".45" stop-color="#2FE4FF"/>
+      <stop offset="1" stop-color="#8A67FF"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="180" y1="128" x2="540" y2="356" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#152A45"/>
+      <stop offset="1" stop-color="#080D18"/>
+    </linearGradient>
+    <linearGradient id="front" x1="290" y1="322" x2="430" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#13253E"/>
+      <stop offset="1" stop-color="#070B13"/>
+    </linearGradient>
+    <radialGradient id="burst" cx="0" cy="0" r="1" gradientTransform="translate(360 286) rotate(90) scale(250)">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".18" stop-color="#CFFFF7"/>
+      <stop offset=".48" stop-color="#40E7FF" stop-opacity=".72"/>
+      <stop offset="1" stop-color="#40E7FF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="28" stdDeviation="30" flood-color="#000000" flood-opacity=".46"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="22" flood-color="#38E6FF" flood-opacity=".38"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#glow)">
+    <path d="M138 330 360 446 582 330 582 560 360 676 138 560V330Z" fill="url(#front)" stroke="url(#neon)" stroke-width="15" stroke-linejoin="round"/>
+    <path d="M138 330 360 446 582 330" stroke="url(#neon)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <path d="M360 446V676" stroke="url(#neon)" stroke-width="15" stroke-linecap="round"/>
+
+    <path d="M132 322 266 238 360 330 138 446 132 322Z" fill="url(#lid)" stroke="url(#neon)" stroke-width="15" stroke-linejoin="round"/>
+    <path d="M588 322 454 238 360 330 582 446 588 322Z" fill="url(#lid)" stroke="url(#neon)" stroke-width="15" stroke-linejoin="round"/>
+
+    <path d="M360 330 286 170 360 78 434 170 360 330Z" fill="url(#burst)" opacity=".95"/>
+    <path d="M360 330 286 170 360 78 434 170 360 330Z" stroke="url(#neon)" stroke-width="14" stroke-linejoin="round"/>
+
+    <circle cx="360" cy="468" r="88" fill="#070B13" stroke="url(#neon)" stroke-width="12"/>
+    <text x="360" y="491" text-anchor="middle" fill="#FFFFFF" font-size="72" font-family="Arial, Helvetica, sans-serif" font-weight="900">OTB</text>
+
+    <path d="M360 90V20M292 114 244 50M428 114 476 50M252 180 176 144M468 180 544 144" stroke="url(#neon)" stroke-width="12" stroke-linecap="round"/>
+
+    <path d="m582 92 10 30 30 10-30 10-10 30-10-30-30-10 30-10 10-30Z" fill="#B7FF65"/>
+    <path d="m138 514 8 24 24 8-24 8-8 24-8-24-24-8 24-8 8-24Z" fill="#2FE4FF"/>
+  </g>
+</svg>

@@ -1,0 +1,900 @@
+OUT THE BOX STUDIOS — SERVER ROUTE STRUCTURE
+Generated: Mon Jul 20 20:51:29 CDT 2026
+
+=== IMPORTS AND TOP-LEVEL HELPERS ===
+
+import http from "node:http";
+import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { existsSync, createReadStream } from "node:fs";
+import { extname, join, normalize } from "node:path";
+import { randomUUID } from "node:crypto";
+
+const PORT = process.env.PORT || 3000;
+const ROOT = process.cwd();
+const PUBLIC = join(ROOT, "public");
+const DATA = join(ROOT, "data");
+const PROJECTS_FILE = join(DATA, "projects.json");
+const WORKERS_FILE = join(ROOT, "workers", "registry.json");
+const CHARACTERS_FILE = join(ROOT, "characters", "registry.json");
+const ASSETS_FILE = join(DATA, "assets.json");
+const UPLOADS = join(PUBLIC, "uploads");
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "";
+
+await mkdir(DATA, { recursive: true });
+await mkdir(UPLOADS, { recursive: true });
+if (!existsSync(PROJECTS_FILE)) await writeFile(PROJECTS_FILE, "[]");
+if (!existsSync(ASSETS_FILE)) await writeFile(ASSETS_FILE, "[]");
+
+const json = (res, status, body) => {
+  res.writeHead(status, { "Content-Type": "application/json; charset=utf-8" });
+  res.end(JSON.stringify(body));
+};
+
+async function readBody(req) {
+  let raw = "";
+  for await (const chunk of req) raw += chunk;
+  return raw ? JSON.parse(raw) : {};
+}
+
+async function loadProjects() {
+  return JSON.parse(await readFile(PROJECTS_FILE, "utf8"));
+}
+
+async function saveProjects(projects) {
+  await writeFile(PROJECTS_FILE, JSON.stringify(projects, null, 2));
+}
+
+
+async function loadAssets() {
+  return JSON.parse(await readFile(ASSETS_FILE, "utf8"));
+}
+
+async function saveAssets(assets) {
+  await writeFile(ASSETS_FILE, JSON.stringify(assets, null, 2));
+}
+
+const allowedImageTypes = new Map([
+  ["image/png", ".png"],
+  ["image/jpeg", ".jpg"],
+  ["image/webp", ".webp"]
+]);
+
+function safeAssetCategory(value = "reference") {
+  const allowed = new Set(["reference", "character", "logo", "product", "background"]);
+  return allowed.has(value) ? value : "reference";
+}
+
+async function loadWorkers() {
+  if (!existsSync(WORKERS_FILE)) return [];
+  return JSON.parse(await readFile(WORKERS_FILE, "utf8"));
+}
+
+async function loadCharacters() {
+  if (!existsSync(CHARACTERS_FILE)) return [];
+  return JSON.parse(await readFile(CHARACTERS_FILE, "utf8"));
+}
+
+function buildContinuityPrompt(prompt, character, shotType = "cinematic") {
+  if (!character) return prompt;
+  const rules = (character.continuityRules || []).map(rule => `- ${rule}`).join("\n");
+  return `CHARACTER CONTINUITY LOCK — ${character.name} V${character.version}\nAppearance: ${character.appearance}\nWardrobe: ${character.wardrobe}\nPersonality: ${character.personality}\nContinuity rules:\n${rules}\nShot type: ${shotType}.\nScene request: ${prompt}\nNegative constraints: ${character.negativePrompt}\nMaintain the registered identity. Do not redesign the character.`;
+}
+
+
+async function readBinaryBody(req, maxBytes = 15 * 1024 * 1024) {
+  const chunks = [];
+  let total = 0;
+  for await (const chunk of req) {
+    total += chunk.length;
+    if (total > maxBytes) {
+      const error = new Error("Image is larger than 15 MB.");
+      error.statusCode = 413;
+      throw error;
+    }
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks);
+}
+
+async function readJsonBody(req) {
+  return new Promise((resolve, reject) => {
+    let body = "";
+
+    req.on("data", chunk => {
+      body += chunk;
+
+      if (Buffer.byteLength(body, "utf8") > 25 * 1024 * 1024) {
+        reject(new Error("Upload request is too large. Keep each image under 15 MB."));
+        req.destroy();
+      }
+    });
+
+    req.on("end", () => {
+      if (!body.trim()) return resolve({});
+
+      try {
+        resolve(JSON.parse(body));
+      } catch {
+        reject(new Error("Invalid JSON request body."));
+      }
+    });
+
+    req.on("error", reject);
+  });
+}
+
+function determineRequiredCapabilities(idea = "") {
+  const text = idea.toLowerCase();
+  const capabilities = new Set([
+    "project-planning",
+    "crew-assembly",
+    "workflow-routing",
+    "artifact-verification",
+    "release-validation"
+  ]);
+
+  if (
+    text.includes("story") ||
+    text.includes("script") ||
+    text.includes("ad") ||
+    text.includes("commercial") ||
+    text.includes("campaign") ||
+    text.includes("facebook") ||
+    text.includes("video")
+  ) {
+    capabilities.add("creative-brief");
+    capabilities.add("script-writing");
+    capabilities.add("storyboard-planning");
+  }
+
+  if (
+    text.includes("image") ||
+    text.includes("picture") ||
+    text.includes("flyer") ||
+    text.includes("cover") ||
+    text.includes("logo") ||
+    text.includes("graphic") ||
+    text.includes("character") ||
+    text.includes("ad")
+  ) {
+    capabilities.add("image-prompting");
+    capabilities.add("image-generation");
+  }
+
+  if (
+    text.includes("character") ||
+    text.includes("mascot") ||
+    text.includes("tiny troy") ||
+    text.includes("brand")
+  ) {
+    capabilities.add("character-design");
+    capabilities.add("brand-consistency");
+  }
+
+  if (
+    text.includes("voice") ||
+    text.includes("narration") ||
+    text.includes("voiceover") ||
+    text.includes("audio")
+  ) {
+    capabilities.add("voice-direction");
+    capabilities.add("speech-generation");
+  }
+
+  if (
+
+=== PROJECT ROUTES ===
+324-    status: complete ? "package-complete" : "in-progress",
+325-    currentStage: stages.find(stage => stage.status !== "complete")?.id || "complete",
+326-    stages,
+327-    evidence: {
+328-      requiredArtifacts: requiredTypes.length,
+329-      verifiedArtifacts: verifiedArtifacts.length,
+330-      releaseApproved: complete,
+331-      finalMediaRendered: Boolean((project.artifacts || []).some(a => a.type === "video" && a.url))
+332-    }
+333-  };
+334-}
+335-
+336:function executeLocalProduction(project) {
+337-  const idea = project.idea || "Untitled production";
+338-  const ensure = (type, name, content) => {
+339-    if (!(project.artifacts || []).some(a => a.type === type)) {
+340-      project.artifacts.push({ type, name, content });
+341-    }
+342-  };
+343-
+344-  ensure("creative-brief", "creative_brief.md", `PURPOSE
+345-Turn this idea into a clear, audience-ready production package.
+346-
+347-IDEA
+348-${idea}
+349-
+350-DELIVERABLES
+351-30-second story, visual direction, voice direction, video assembly plan, and evidence review.`);
+352-  ensure("script", "commercial_script.md", `0–05 sec — Hook: Open with the strongest truthful visual promise.
+353-05–18 sec — Story: Show the experience, problem, and transformation.
+354-18–26 sec — Proof: Present the payoff and real-world value.
+355-26–30 sec — Call to action: Invite the viewer to take the next step.
+356-
+357-Project idea: ${idea}`);
+358-  ensure("storyboard", "storyboard.json", JSON.stringify([
+359-    { scene: 1, duration: "0-5s", purpose: "Hook", visual: "Immediate hero reveal", audio: "Short attention-grabbing opening" },
+360-    { scene: 2, duration: "5-18s", purpose: "Build", visual: "Show the experience and transformation", audio: "Clear benefit-led narration" },
+361-    { scene: 3, duration: "18-30s", purpose: "Proof + CTA", visual: "Payoff, trust moment, final brand frame", audio: "Confident call to action" }
+362-  ], null, 2));
+363-  ensure("character", "character_continuity.md", "Keep every recurring character visually consistent across scenes: face, skin tone, hair, clothing, accessories, proportions, personality, and brand-safe presentation. Record any intentional change before generating assets.");
+364-  ensure("image-prompts", "scene_prompts.md", `Scene 1 — Cinematic hero opening based on: ${idea}
+365-Scene 2 — Dynamic transformation sequence with clear visual storytelling and consistent characters.
+366-Scene 3 — Warm payoff frame with an unmistakable call to action and clean brand presentation.`);
+367-  ensure("audio-direction", "voice_direction.md", "Voice: warm, confident, conversational, trustworthy. Pace: energetic but easy to understand. Music: modern and uplifting, kept below narration. Sound design: restrained transitions and one memorable payoff accent.");
+368-  ensure("video-plan", "video_assembly_plan.json", JSON.stringify({
+369-    format: "30-second master",
+370-    aspectRatios: ["16:9", "9:16", "1:1"],
+371-    timeline: [
+372-      { range: "0-5s", layer: "Hook + title" },
+373-      { range: "5-18s", layer: "Main story + visual progression" },
+374-      { range: "18-26s", layer: "Proof/payoff" },
+375-      { range: "26-30s", layer: "CTA + logo/end card" }
+376-    ],
+377-    renderState: "planned-not-rendered"
+378-  }, null, 2));
+379-  ensure("qa", "evidence_report.md", "PASS: Required planning artifacts exist and are inspectable. RELEASE APPROVAL: Production package approved. FINAL MEDIA STATUS: No MP4, generated voice track, or complete rendered video is claimed unless a real media artifact is attached.");
+380-
+381-  project.workers = (project.workers || []).map(worker => {
+382-    if (worker.name.includes("Video")) return { ...worker, status: "planned", output: "Video assembly plan complete; render provider still required" };
+383-    if (worker.name.includes("Image")) return { ...worker, status: "planned", output: "Scene prompts complete; image provider optional" };
+384-    return { ...worker, status: "complete" };
+385-  });
+386-  project.releaseLevel = "Verified production package — final media not rendered";
+387-  project.runtime = buildRuntimeState(project);
+388:  project.executedAt = new Date().toISOString();
+389-  return project;
+390-}
+391-
+392-function localCrew(idea) {
+393-  const title = idea.match(/PROJECT:\s*(.+)/i)?.[1]?.split("\n")[0]?.trim() || "New Dream";
+394-  return {
+395-    title,
+396-    status: "production-package-ready",
+397-    releaseLevel: "Concept package — no final video rendered",
+398-    workers: [
+399-      { name: "Studio Director AI", status: "complete", output: "Creative brief" },
+400-      { name: "Story Architect AI", status: "complete", output: "30-second script" },
+401-      { name: "Storyboard AI", status: "complete", output: "3-scene storyboard" },
+402-      { name: "Character Continuity AI", status: "complete", output: "Tiny Troy continuity guide" },
+403-      { name: "Image Director AI", status: "ready", output: "Scene image prompts" },
+404-      { name: "Video Assembly AI", status: "blocked", output: "Waiting for generated scene images and audio" },
+405-      { name: "Evidence QA AI", status: "complete", output: "Truthful release check" }
+406-    ],
+407-    artifacts: [
+408-      { type: "creative-brief", name: "creative_brief.md", content: `Create a premium Tiny Troy commercial from this idea:\n\n${idea}` },
+409-      { type: "script", name: "commercial_script.md", content: "Scene 1: Tiny Troy enters the showroom and speaks directly to drivers.\nScene 2: Vehicles transform around him while he explains the upgrade experience.\nScene 3: A customer receives keys and Tiny Troy delivers the call to action." },
+410-      { type: "storyboard", name: "storyboard.json", content: JSON.stringify([
+411-        { scene: 1, title: "Showroom Arrival", shot: "Wide-to-medium tracking shot", goal: "Introduce Tiny Troy and the dealership." },
+412-        { scene: 2, title: "Vehicle Transformation", shot: "Dynamic orbit with energetic transitions", goal: "Show options and excitement." },
+413-        { scene: 3, title: "Customer Payoff", shot: "Warm hero shot with keys", goal: "Deliver trust and CTA." }
+414-      ], null, 2) },
+415-      { type: "character", name: "tiny_troy_continuity.md", content: "Warm brown skin, large expressive brown eyes, short dark hair, neatly shaped full black beard and mustache, small stud earrings, brown fedora, polished stylized 3D appearance, confident and approachable." },
+416-      { type: "image-prompts", name: "scene_prompts.md", content: "Scene 1: Stylized 3D Tiny Troy entering a bright Nissan showroom, cinematic lighting, original family-friendly animated-film quality.\nScene 2: Tiny Troy snapping his fingers as vehicles transition around him, energetic camera movement, polished materials.\nScene 3: Tiny Troy handing keys to a smiling customer, warm emotional lighting, dealership branding handled accurately." },
+417-      { type: "qa", name: "qa_report.md", content: "PASS: production package exists. BLOCKED: no newly generated images, voice track, music, or MP4. Do not mark final video complete." }
+418-    ]
+419-  };
+420-}
+421-
+422-async function runOpenAI(idea) {
+423-  const prompt = `You are the Studio Director AI for Out the Box Studio. Convert the user's idea into a truthful production package. Return strict JSON with keys: title, status, releaseLevel, workers (array of name,status,output), artifacts (array of type,name,content). Include a creative brief, 30-second script, 3-scene storyboard, Tiny Troy continuity guide, image prompts, audio direction, and QA report. Never claim a final video exists unless an MP4 was actually produced.\n\nUSER IDEA:\n${idea}`;
+424-  const r = await fetch("https://api.openai.com/v1/responses", {
+425-    method: "POST",
+426-    headers: {
+427-      "Authorization": `Bearer ${OPENAI_API_KEY}`,
+428-      "Content-Type": "application/json"
+429-    },
+430-    body: JSON.stringify({
+431-      model: process.env.OPENAI_MODEL || "gpt-5",
+432-      input: prompt,
+433-      text: { format: { type: "json_object" } }
+434-    })
+435-  });
+436-  if (!r.ok) throw new Error(`OpenAI request failed: ${r.status} ${await r.text()}`);
+437-  const data = await r.json();
+438-  return JSON.parse(data.output_text);
+439-}
+440-
+441:async function generateImage(prompt, projectId) {
+442-  if (!OPENAI_API_KEY) throw new Error("OPENAI_API_KEY is not configured.");
+443-  const r = await fetch("https://api.openai.com/v1/images/generations", {
+444-    method: "POST",
+445-    headers: {
+446-      "Authorization": `Bearer ${OPENAI_API_KEY}`,
+447-      "Content-Type": "application/json"
+448-    },
+449-    body: JSON.stringify({
+450-      model: process.env.OPENAI_IMAGE_MODEL || "gpt-image-1",
+451-      prompt,
+452-      size: "1024x1024"
+453-    })
+454-  });
+455-  if (!r.ok) throw new Error(`Image generation failed: ${r.status} ${await r.text()}`);
+456-  const data = await r.json();
+457-  const b64 = data.data?.[0]?.b64_json;
+458-  if (!b64) throw new Error("Image API returned no image.");
+459-  const dir = join(PUBLIC, "generated");
+460-  await mkdir(dir, { recursive: true });
+461:  const filename = `${projectId}-${Date.now()}.png`;
+462-  await writeFile(join(dir, filename), Buffer.from(b64, "base64"));
+463-  return `/generated/${filename}`;
+464-}
+465-
+466-
+467:async function editImage(prompt, projectId, asset) {
+468-  if (!OPENAI_API_KEY) throw new Error("OPENAI_API_KEY is not configured.");
+469-  const sourcePath = join(PUBLIC, normalize(asset.url));
+470-  if (!sourcePath.startsWith(PUBLIC) || !existsSync(sourcePath)) throw new Error("Reference image is missing.");
+471-  const bytes = await readFile(sourcePath);
+472-  const form = new FormData();
+473-  form.append("model", process.env.OPENAI_IMAGE_MODEL || "gpt-image-1");
+474-  form.append("prompt", prompt);
+475-  form.append("size", "1024x1024");
+476-  form.append("input_fidelity", "high");
+477-  form.append("image", new Blob([bytes], { type: asset.mimeType }), asset.originalName);
+478-  const r = await fetch("https://api.openai.com/v1/images/edits", {
+479-    method: "POST",
+480-    headers: { "Authorization": `Bearer ${OPENAI_API_KEY}` },
+481-    body: form
+482-  });
+483-  if (!r.ok) throw new Error(`Image edit failed: ${r.status} ${await r.text()}`);
+484-  const data = await r.json();
+485-  const b64 = data.data?.[0]?.b64_json;
+486-  if (!b64) throw new Error("Image edit API returned no image.");
+487-  const dir = join(PUBLIC, "generated");
+488-  await mkdir(dir, { recursive: true });
+489:  const filename = `${projectId}-reference-edit-${Date.now()}.png`;
+490-  await writeFile(join(dir, filename), Buffer.from(b64, "base64"));
+491-  return `/generated/${filename}`;
+492-}
+493-
+494-const mime = {
+495-  ".html": "text/html; charset=utf-8",
+496-  ".js": "text/javascript; charset=utf-8",
+497-  ".css": "text/css; charset=utf-8",
+498-  ".png": "image/png",
+499-  ".jpg": "image/jpeg",
+500-  ".jpeg": "image/jpeg",
+501-  ".webp": "image/webp",
+502-  ".svg": "image/svg+xml",
+503-  ".json": "application/json; charset=utf-8"
+504-};
+505-
+506-const server = http.createServer(async (req, res) => {
+507-  try {
+508-    const url = new URL(req.url, `http://${req.headers.host}`);
+509-
+510:    if (req.method === "GET" && url.pathname === "/api/projects") {
+511-      return json(res, 200, await loadProjects());
+512-    }
+513-
+514-    if (req.method === "GET" && url.pathname === "/api/workers") {
+515-      return json(res, 200, await loadWorkers());
+516-    }
+517-
+518-    if (req.method === "GET" && url.pathname === "/api/characters") {
+519-      return json(res, 200, await loadCharacters());
+520-    }
+521-
+522-
+523-    if (req.method === "GET" && url.pathname === "/api/assets") {
+524-      return json(res, 200, await loadAssets());
+525-    }
+526-
+527-
+528-    if (req.method === "POST" && url.pathname === "/api/assets/upload") {
+529-      const mimeType = String(req.headers["content-type"] || "").split(";")[0].trim();
+530-      const ext = allowedImageTypes.get(mimeType);
+531-      if (!ext) return json(res, 400, { error: "Upload a PNG, JPG, or WEBP image." });
+532-
+533-      const bytes = await readBinaryBody(req);
+534-      if (!bytes.length) return json(res, 400, { error: "The selected image is empty." });
+535-
+536-      const id = randomUUID();
+537-      const filename = `${id}${ext}`;
+538-      await writeFile(join(UPLOADS, filename), bytes);
+539-
+540-      const name = String(url.searchParams.get("name") || "Reference image").trim().slice(0, 120);
+541-      const originalName = String(url.searchParams.get("originalName") || name).slice(0, 180);
+542-      const category = safeAssetCategory(url.searchParams.get("category") || "reference");
+543-      const tags = String(url.searchParams.get("tags") || "")
+544-        .split(",").map(tag => tag.trim()).filter(Boolean).slice(0, 12);
+545-      const officialReference = url.searchParams.get("officialReference") === "true";
+546-
+547-      const asset = {
+548-        id, name, originalName, category, tags, mimeType, sizeBytes: bytes.length,
+549-        url: `/uploads/${filename}`, officialReference, createdAt: new Date().toISOString()
+550-      };
+551-      const assets = await loadAssets();
+552-      assets.unshift(asset);
+553-      await saveAssets(assets);
+554-      console.log(`Asset uploaded: ${originalName} (${bytes.length} bytes)`);
+555-      return json(res, 201, asset);
+--
+612-        requiredCapabilities,
+613-        crew,
+614-        executionPlan,
+615-        evidence: {
+616-          workerRegistryLoaded: workers.length > 0,
+617-          workersConsidered: workers.length,
+618-          workersSelected: crew.length
+619-        }
+620-      });
+621-    }
+622-
+623-
+624:    if (req.method === "POST" && url.pathname === "/api/projects") {
+625-      const { idea } = await readBody(req);
+626-      if (!idea?.trim()) return json(res, 400, { error: "Tell the studio what to build." });
+627-      let production;
+628-      try {
+629-        production = OPENAI_API_KEY ? await runOpenAI(idea) : localCrew(idea);
+630-      } catch (error) {
+631-        production = localCrew(idea);
+632-        production.releaseLevel += ` — AI provider fallback used: ${error.message}`;
+633-      }
+634-      const workers = await loadWorkers();
+635-      const requiredCapabilities = determineRequiredCapabilities(idea);
+636-      const crew = assembleCrew(workers, requiredCapabilities);
+637-      const crewPlan = {
+638-        status: "planned",
+639-        requiredCapabilities,
+640-        crew,
+641-        executionPlan: buildExecutionPlan(idea, crew),
+642-        evidence: {
+643-          workerRegistryLoaded: workers.length > 0,
+644-          workersConsidered: workers.length,
+645-          workersSelected: crew.length
+646-        }
+647-      };
+648-      const project = { id: randomUUID(), idea, createdAt: new Date().toISOString(), crewPlan, ...production };
+649-      project.runtime = buildRuntimeState(project);
+650-      const projects = await loadProjects();
+651-      projects.unshift(project);
+652-      await saveProjects(projects);
+653-      return json(res, 201, project);
+654-    }
+655-
+656-
+657:    if (req.method === "POST" && url.pathname.match(/^\/api\/projects\/[^/]+\/execute$/)) {
+658-      const id = url.pathname.split("/")[3];
+659-      const projects = await loadProjects();
+660-      const project = projects.find(p => p.id === id);
+661-      if (!project) return json(res, 404, { error: "Project not found." });
+662:      executeLocalProduction(project);
+663-      await saveProjects(projects);
+664-      return json(res, 200, project);
+665-    }
+666-
+667-    if (req.method === "POST" && url.pathname.match(/^\/api\/projects\/[^/]+\/image$/)) {
+668-      const id = url.pathname.split("/")[3];
+669-      const { prompt, characterId = "tiny-troy", shotType = "cinematic", mode = "ai", assetId = null } = await readBody(req);
+670-      const projects = await loadProjects();
+671-      const project = projects.find(p => p.id === id);
+672-      if (!project) return json(res, 404, { error: "Project not found." });
+673-      const characters = await loadCharacters();
+674-      const character = characters.find(item => item.id === characterId) || characters[0];
+675-      const continuityPrompt = buildContinuityPrompt(prompt, character, shotType);
+676-      const assets = await loadAssets();
+677-      const sourceAsset = assetId ? assets.find(a => a.id === assetId) : null;
+678-      if ((mode === "assets" || mode === "hybrid") && !sourceAsset) return json(res, 400, { error: "Select a reference image first." });
+679-      let imageUrl;
+680-      if (mode === "assets") {
+681-        imageUrl = sourceAsset.url;
+682-      } else if (mode === "hybrid") {
+683-        imageUrl = await editImage(`${continuityPrompt}\nUse the uploaded reference image as the primary visual source. Preserve recognizable people, product details, composition cues, and brand identity unless the request explicitly changes them.`, id, sourceAsset);
+684-      } else {
+685-        imageUrl = await generateImage(continuityPrompt, id);
+686-      }
+687-      project.artifacts.push({
+688-        id: randomUUID(), type: "image", name: imageUrl.split("/").pop(), url: imageUrl,
+689-        content: prompt, finalPrompt: continuityPrompt, characterId: character?.id || null,
+690-        characterVersion: character?.version || null, shotType, mode, sourceAssetId: sourceAsset?.id || null,
+691-        sourceAssetUrl: sourceAsset?.url || null, provider: mode === "assets" ? "Owner asset" : "OpenAI",
+692-        model: process.env.OPENAI_IMAGE_MODEL || "gpt-image-1", createdAt: new Date().toISOString(),
+693-        approvalStatus: "needs-review"
+694-      });
+695-      project.workers = project.workers.map(w => w.name.includes("Image") ? { ...w, status: "complete", output: "Generated scene image" } : w);
+696-      await saveProjects(projects);
+697-      return json(res, 200, { imageUrl, project });
+698-    }
+699-
+700-    if (req.method === "DELETE" && url.pathname.match(/^\/api\/projects\/[^/]+$/)) {
+701-      const id = url.pathname.split("/")[3];
+702-      const projects = (await loadProjects()).filter(p => p.id !== id);
+703-      await saveProjects(projects);
+704-      return json(res, 200, { ok: true });
+705-    }
+706-
+707-    let filePath = url.pathname === "/" ? join(PUBLIC, "index.html") : join(PUBLIC, normalize(url.pathname));
+
+=== REQUEST BODY / JSON HELPERS ===
+
+=== STORAGE HELPERS ===
+4-import { existsSync, createReadStream } from "node:fs";
+5-import { extname, join, normalize } from "node:path";
+6-import { randomUUID } from "node:crypto";
+7-
+8-const PORT = process.env.PORT || 3000;
+9-const ROOT = process.cwd();
+10-const PUBLIC = join(ROOT, "public");
+11-const DATA = join(ROOT, "data");
+12:const PROJECTS_FILE = join(DATA, "projects.json");
+13-const WORKERS_FILE = join(ROOT, "workers", "registry.json");
+14-const CHARACTERS_FILE = join(ROOT, "characters", "registry.json");
+15-const ASSETS_FILE = join(DATA, "assets.json");
+16-const UPLOADS = join(PUBLIC, "uploads");
+17-const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "";
+18-
+19-await mkdir(DATA, { recursive: true });
+20-await mkdir(UPLOADS, { recursive: true });
+21:if (!existsSync(PROJECTS_FILE)) await writeFile(PROJECTS_FILE, "[]");
+22-if (!existsSync(ASSETS_FILE)) await writeFile(ASSETS_FILE, "[]");
+23-
+24-const json = (res, status, body) => {
+25-  res.writeHead(status, { "Content-Type": "application/json; charset=utf-8" });
+26-  res.end(JSON.stringify(body));
+27-};
+28-
+29-async function readBody(req) {
+30-  let raw = "";
+31-  for await (const chunk of req) raw += chunk;
+32-  return raw ? JSON.parse(raw) : {};
+33-}
+34-
+35:async function loadProjects() {
+36:  return JSON.parse(await readFile(PROJECTS_FILE, "utf8"));
+37-}
+38-
+39:async function saveProjects(projects) {
+40:  await writeFile(PROJECTS_FILE, JSON.stringify(projects, null, 2));
+41-}
+42-
+43-
+44-async function loadAssets() {
+45-  return JSON.parse(await readFile(ASSETS_FILE, "utf8"));
+46-}
+47-
+48-async function saveAssets(assets) {
+49-  await writeFile(ASSETS_FILE, JSON.stringify(assets, null, 2));
+50-}
+51-
+52-const allowedImageTypes = new Map([
+53-  ["image/png", ".png"],
+54-  ["image/jpeg", ".jpg"],
+55-  ["image/webp", ".webp"]
+56-]);
+57-
+58-function safeAssetCategory(value = "reference") {
+59-  const allowed = new Set(["reference", "character", "logo", "product", "background"]);
+60-  return allowed.has(value) ? value : "reference";
+61-}
+62-
+63-async function loadWorkers() {
+64-  if (!existsSync(WORKERS_FILE)) return [];
+65-  return JSON.parse(await readFile(WORKERS_FILE, "utf8"));
+66-}
+67-
+68-async function loadCharacters() {
+69-  if (!existsSync(CHARACTERS_FILE)) return [];
+70-  return JSON.parse(await readFile(CHARACTERS_FILE, "utf8"));
+71-}
+72-
+73-function buildContinuityPrompt(prompt, character, shotType = "cinematic") {
+74-  if (!character) return prompt;
+75-  const rules = (character.continuityRules || []).map(rule => `- ${rule}`).join("\n");
+--
+503-  ".json": "application/json; charset=utf-8"
+504-};
+505-
+506-const server = http.createServer(async (req, res) => {
+507-  try {
+508-    const url = new URL(req.url, `http://${req.headers.host}`);
+509-
+510-    if (req.method === "GET" && url.pathname === "/api/projects") {
+511:      return json(res, 200, await loadProjects());
+512-    }
+513-
+514-    if (req.method === "GET" && url.pathname === "/api/workers") {
+515-      return json(res, 200, await loadWorkers());
+516-    }
+517-
+518-    if (req.method === "GET" && url.pathname === "/api/characters") {
+519-      return json(res, 200, await loadCharacters());
+520-    }
+521-
+522-
+523-    if (req.method === "GET" && url.pathname === "/api/assets") {
+524-      return json(res, 200, await loadAssets());
+525-    }
+526-
+527-
+528-    if (req.method === "POST" && url.pathname === "/api/assets/upload") {
+529-      const mimeType = String(req.headers["content-type"] || "").split(";")[0].trim();
+530-      const ext = allowedImageTypes.get(mimeType);
+531-      if (!ext) return json(res, 400, { error: "Upload a PNG, JPG, or WEBP image." });
+532-
+533-      const bytes = await readBinaryBody(req);
+534-      if (!bytes.length) return json(res, 400, { error: "The selected image is empty." });
+535-
+536-      const id = randomUUID();
+537-      const filename = `${id}${ext}`;
+538-      await writeFile(join(UPLOADS, filename), bytes);
+539-
+540-      const name = String(url.searchParams.get("name") || "Reference image").trim().slice(0, 120);
+541-      const originalName = String(url.searchParams.get("originalName") || name).slice(0, 180);
+542-      const category = safeAssetCategory(url.searchParams.get("category") || "reference");
+543-      const tags = String(url.searchParams.get("tags") || "")
+544-        .split(",").map(tag => tag.trim()).filter(Boolean).slice(0, 12);
+545-      const officialReference = url.searchParams.get("officialReference") === "true";
+546-
+--
+642-        evidence: {
+643-          workerRegistryLoaded: workers.length > 0,
+644-          workersConsidered: workers.length,
+645-          workersSelected: crew.length
+646-        }
+647-      };
+648-      const project = { id: randomUUID(), idea, createdAt: new Date().toISOString(), crewPlan, ...production };
+649-      project.runtime = buildRuntimeState(project);
+650:      const projects = await loadProjects();
+651-      projects.unshift(project);
+652:      await saveProjects(projects);
+653-      return json(res, 201, project);
+654-    }
+655-
+656-
+657-    if (req.method === "POST" && url.pathname.match(/^\/api\/projects\/[^/]+\/execute$/)) {
+658-      const id = url.pathname.split("/")[3];
+659:      const projects = await loadProjects();
+660-      const project = projects.find(p => p.id === id);
+661-      if (!project) return json(res, 404, { error: "Project not found." });
+662-      executeLocalProduction(project);
+663:      await saveProjects(projects);
+664-      return json(res, 200, project);
+665-    }
+666-
+667-    if (req.method === "POST" && url.pathname.match(/^\/api\/projects\/[^/]+\/image$/)) {
+668-      const id = url.pathname.split("/")[3];
+669-      const { prompt, characterId = "tiny-troy", shotType = "cinematic", mode = "ai", assetId = null } = await readBody(req);
+670:      const projects = await loadProjects();
+671-      const project = projects.find(p => p.id === id);
+672-      if (!project) return json(res, 404, { error: "Project not found." });
+673-      const characters = await loadCharacters();
+674-      const character = characters.find(item => item.id === characterId) || characters[0];
+675-      const continuityPrompt = buildContinuityPrompt(prompt, character, shotType);
+676-      const assets = await loadAssets();
+677-      const sourceAsset = assetId ? assets.find(a => a.id === assetId) : null;
+678-      if ((mode === "assets" || mode === "hybrid") && !sourceAsset) return json(res, 400, { error: "Select a reference image first." });
+679-      let imageUrl;
+680-      if (mode === "assets") {
+681-        imageUrl = sourceAsset.url;
+682-      } else if (mode === "hybrid") {
+683-        imageUrl = await editImage(`${continuityPrompt}\nUse the uploaded reference image as the primary visual source. Preserve recognizable people, product details, composition cues, and brand identity unless the request explicitly changes them.`, id, sourceAsset);
+684-      } else {
+685-        imageUrl = await generateImage(continuityPrompt, id);
+686-      }
+687-      project.artifacts.push({
+688-        id: randomUUID(), type: "image", name: imageUrl.split("/").pop(), url: imageUrl,
+689-        content: prompt, finalPrompt: continuityPrompt, characterId: character?.id || null,
+690-        characterVersion: character?.version || null, shotType, mode, sourceAssetId: sourceAsset?.id || null,
+691-        sourceAssetUrl: sourceAsset?.url || null, provider: mode === "assets" ? "Owner asset" : "OpenAI",
+692-        model: process.env.OPENAI_IMAGE_MODEL || "gpt-image-1", createdAt: new Date().toISOString(),
+693-        approvalStatus: "needs-review"
+694-      });
+695-      project.workers = project.workers.map(w => w.name.includes("Image") ? { ...w, status: "complete", output: "Generated scene image" } : w);
+696:      await saveProjects(projects);
+697-      return json(res, 200, { imageUrl, project });
+698-    }
+699-
+700-    if (req.method === "DELETE" && url.pathname.match(/^\/api\/projects\/[^/]+$/)) {
+701-      const id = url.pathname.split("/")[3];
+702:      const projects = (await loadProjects()).filter(p => p.id !== id);
+703:      await saveProjects(projects);
+704-      return json(res, 200, { ok: true });
+705-    }
+706-
+707-    let filePath = url.pathname === "/" ? join(PUBLIC, "index.html") : join(PUBLIC, normalize(url.pathname));
+708-    if (!filePath.startsWith(PUBLIC) || !existsSync(filePath)) {
+709-      res.writeHead(404); return res.end("Not found");
+710-    }
+711-    res.writeHead(200, { "Content-Type": mime[extname(filePath)] || "application/octet-stream" });
+712-    createReadStream(filePath).pipe(res);
+713-  } catch (error) {
+714-    console.error("Request failed:", error);
+715-    json(res, error.statusCode || 500, { error: error.message || "Unexpected server error." });
+716-  }
+717-});
+718-
+719-server.listen(PORT, () => {
+720-  console.log(`Out the Box Studio running at http://localhost:${PORT}`);
+721-  console.log(OPENAI_API_KEY ? "AI provider: OpenAI connected" : "AI provider: local demo mode");
+722-});
+
+=== REQUEST HANDLER END ===
+      const tags = String(url.searchParams.get("tags") || "")
+        .split(",").map(tag => tag.trim()).filter(Boolean).slice(0, 12);
+      const officialReference = url.searchParams.get("officialReference") === "true";
+
+      const asset = {
+        id, name, originalName, category, tags, mimeType, sizeBytes: bytes.length,
+        url: `/uploads/${filename}`, officialReference, createdAt: new Date().toISOString()
+      };
+      const assets = await loadAssets();
+      assets.unshift(asset);
+      await saveAssets(assets);
+      console.log(`Asset uploaded: ${originalName} (${bytes.length} bytes)`);
+      return json(res, 201, asset);
+    }
+
+    if (req.method === "POST" && url.pathname === "/api/assets") {
+      const body = await readJsonBody(req);
+      const name = String(body.name || "Reference image").trim().slice(0, 120);
+      const mimeType = String(body.mimeType || "");
+      const dataUrl = String(body.dataUrl || "");
+      const ext = allowedImageTypes.get(mimeType);
+      if (!ext) return json(res, 400, { error: "Upload a PNG, JPG, or WEBP image." });
+      const match = dataUrl.match(/^data:image\/(png|jpeg|webp);base64,(.+)$/);
+      if (!match) return json(res, 400, { error: "Invalid image upload." });
+      const bytes = Buffer.from(match[2], "base64");
+      if (!bytes.length || bytes.length > 15 * 1024 * 1024) return json(res, 400, { error: "Image must be between 1 byte and 15 MB." });
+      const id = randomUUID();
+      const filename = `${id}${ext}`;
+      await writeFile(join(UPLOADS, filename), bytes);
+      const asset = {
+        id, name, originalName: String(body.originalName || name).slice(0, 180),
+        category: safeAssetCategory(body.category), tags: Array.isArray(body.tags) ? body.tags.slice(0, 12) : [],
+        mimeType, sizeBytes: bytes.length, url: `/uploads/${filename}`,
+        officialReference: Boolean(body.officialReference), createdAt: new Date().toISOString()
+      };
+      const assets = await loadAssets();
+      assets.unshift(asset);
+      await saveAssets(assets);
+      return json(res, 201, asset);
+    }
+
+    if (req.method === "DELETE" && url.pathname.match(/^\/api\/assets\/[^/]+$/)) {
+      const id = url.pathname.split("/")[3];
+      const assets = await loadAssets();
+      const asset = assets.find(a => a.id === id);
+      if (!asset) return json(res, 404, { error: "Asset not found." });
+      const next = assets.filter(a => a.id !== id);
+      await saveAssets(next);
+      return json(res, 200, { ok: true });
+    }
+
+    if (req.method === "POST" && url.pathname === "/api/crew/plan") {
+      const body = await readJsonBody(req);
+      const idea = String(body.idea || "").trim();
+
+      if (!idea) {
+        return json(res, 400, {
+          error: "An idea is required."
+        });
+      }
+
+      const workers = await loadWorkers();
+      const requiredCapabilities = determineRequiredCapabilities(idea);
+      const crew = assembleCrew(workers, requiredCapabilities);
+      const executionPlan = buildExecutionPlan(idea, crew);
+
+      return json(res, 201, {
+        status: "planned",
+        idea,
+        requiredCapabilities,
+        crew,
+        executionPlan,
+        evidence: {
+          workerRegistryLoaded: workers.length > 0,
+          workersConsidered: workers.length,
+          workersSelected: crew.length
+        }
+      });
+    }
+
+
+    if (req.method === "POST" && url.pathname === "/api/projects") {
+      const { idea } = await readBody(req);
+      if (!idea?.trim()) return json(res, 400, { error: "Tell the studio what to build." });
+      let production;
+      try {
+        production = OPENAI_API_KEY ? await runOpenAI(idea) : localCrew(idea);
+      } catch (error) {
+        production = localCrew(idea);
+        production.releaseLevel += ` — AI provider fallback used: ${error.message}`;
+      }
+      const workers = await loadWorkers();
+      const requiredCapabilities = determineRequiredCapabilities(idea);
+      const crew = assembleCrew(workers, requiredCapabilities);
+      const crewPlan = {
+        status: "planned",
+        requiredCapabilities,
+        crew,
+        executionPlan: buildExecutionPlan(idea, crew),
+        evidence: {
+          workerRegistryLoaded: workers.length > 0,
+          workersConsidered: workers.length,
+          workersSelected: crew.length
+        }
+      };
+      const project = { id: randomUUID(), idea, createdAt: new Date().toISOString(), crewPlan, ...production };
+      project.runtime = buildRuntimeState(project);
+      const projects = await loadProjects();
+      projects.unshift(project);
+      await saveProjects(projects);
+      return json(res, 201, project);
+    }
+
+
+    if (req.method === "POST" && url.pathname.match(/^\/api\/projects\/[^/]+\/execute$/)) {
+      const id = url.pathname.split("/")[3];
+      const projects = await loadProjects();
+      const project = projects.find(p => p.id === id);
+      if (!project) return json(res, 404, { error: "Project not found." });
+      executeLocalProduction(project);
+      await saveProjects(projects);
+      return json(res, 200, project);
+    }
+
+    if (req.method === "POST" && url.pathname.match(/^\/api\/projects\/[^/]+\/image$/)) {
+      const id = url.pathname.split("/")[3];
+      const { prompt, characterId = "tiny-troy", shotType = "cinematic", mode = "ai", assetId = null } = await readBody(req);
+      const projects = await loadProjects();
+      const project = projects.find(p => p.id === id);
+      if (!project) return json(res, 404, { error: "Project not found." });
+      const characters = await loadCharacters();
+      const character = characters.find(item => item.id === characterId) || characters[0];
+      const continuityPrompt = buildContinuityPrompt(prompt, character, shotType);
+      const assets = await loadAssets();
+      const sourceAsset = assetId ? assets.find(a => a.id === assetId) : null;
+      if ((mode === "assets" || mode === "hybrid") && !sourceAsset) return json(res, 400, { error: "Select a reference image first." });
+      let imageUrl;
+      if (mode === "assets") {
+        imageUrl = sourceAsset.url;
+      } else if (mode === "hybrid") {
+        imageUrl = await editImage(`${continuityPrompt}\nUse the uploaded reference image as the primary visual source. Preserve recognizable people, product details, composition cues, and brand identity unless the request explicitly changes them.`, id, sourceAsset);
+      } else {
+        imageUrl = await generateImage(continuityPrompt, id);
+      }
+      project.artifacts.push({
+        id: randomUUID(), type: "image", name: imageUrl.split("/").pop(), url: imageUrl,
+        content: prompt, finalPrompt: continuityPrompt, characterId: character?.id || null,
+        characterVersion: character?.version || null, shotType, mode, sourceAssetId: sourceAsset?.id || null,
+        sourceAssetUrl: sourceAsset?.url || null, provider: mode === "assets" ? "Owner asset" : "OpenAI",
+        model: process.env.OPENAI_IMAGE_MODEL || "gpt-image-1", createdAt: new Date().toISOString(),
+        approvalStatus: "needs-review"
+      });
+      project.workers = project.workers.map(w => w.name.includes("Image") ? { ...w, status: "complete", output: "Generated scene image" } : w);
+      await saveProjects(projects);
+      return json(res, 200, { imageUrl, project });
+    }
+
+    if (req.method === "DELETE" && url.pathname.match(/^\/api\/projects\/[^/]+$/)) {
+      const id = url.pathname.split("/")[3];
+      const projects = (await loadProjects()).filter(p => p.id !== id);
+      await saveProjects(projects);
+      return json(res, 200, { ok: true });
+    }
+
+    let filePath = url.pathname === "/" ? join(PUBLIC, "index.html") : join(PUBLIC, normalize(url.pathname));
+    if (!filePath.startsWith(PUBLIC) || !existsSync(filePath)) {
+      res.writeHead(404); return res.end("Not found");
+    }
+    res.writeHead(200, { "Content-Type": mime[extname(filePath)] || "application/octet-stream" });
+    createReadStream(filePath).pipe(res);
+  } catch (error) {
+    console.error("Request failed:", error);
+    json(res, error.statusCode || 500, { error: error.message || "Unexpected server error." });
+  }
+});
+
+server.listen(PORT, () => {
+  console.log(`Out the Box Studio running at http://localhost:${PORT}`);
+  console.log(OPENAI_API_KEY ? "AI provider: OpenAI connected" : "AI provider: local demo mode");
+});

@@ -1,0 +1,222 @@
+/* ======================================================
+   SIDEBAR TOOLS POLISH
+   ====================================================== */
+
+.rail{
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(56,231,255,.16) transparent;
+}
+
+.rail::-webkit-scrollbar{
+  width:5px;
+}
+
+.rail::-webkit-scrollbar-thumb{
+  border-radius:999px;
+  background:rgba(56,231,255,.14);
+}
+
+#visualRailNavigation{
+  flex:0 0 auto;
+}
+
+.sidebar-tools-drawer{
+  display:none;
+  margin:8px 0 10px;
+  padding:10px;
+  border:1px solid rgba(56,231,255,.11);
+  border-radius:13px;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(56,231,255,.07),transparent 30%),
+    rgba(8,15,27,.9);
+}
+
+.sidebar-tools-drawer.open{
+  display:block;
+  animation:sidebarDrawerReveal .2s ease both;
+}
+
+@keyframes sidebarDrawerReveal{
+  from{
+    opacity:0;
+    transform:translateY(-7px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.sidebar-tools-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+  padding:3px 4px 9px;
+  border-bottom:1px solid rgba(255,255,255,.055);
+}
+
+.sidebar-tools-head span{
+  display:block;
+  color:#AFFF68;
+  font-size:.5rem;
+  font-weight:900;
+  letter-spacing:.13em;
+}
+
+.sidebar-tools-head strong{
+  display:block;
+  margin-top:3px;
+  color:#DCE3EE;
+  font-size:.63rem;
+}
+
+#closeSidebarTools{
+  display:grid;
+  place-items:center;
+  width:27px;
+  height:27px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:8px;
+  background:rgba(255,255,255,.025);
+  color:#718096;
+  font-size:.9rem;
+}
+
+.sidebar-tools-list{
+  display:grid;
+  gap:5px;
+  padding-top:8px;
+}
+
+.sidebar-tool-item{
+  display:grid!important;
+  grid-template-columns:37px 1fr!important;
+  gap:9px!important;
+  min-height:54px!important;
+  padding:8px 9px!important;
+  border:1px solid transparent!important;
+  border-radius:10px!important;
+  background:transparent!important;
+  color:#8C9AAF!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+}
+
+.sidebar-tool-item>span{
+  width:37px!important;
+  height:37px!important;
+  border-radius:10px!important;
+}
+
+.sidebar-tool-item strong{
+  font-size:.68rem!important;
+}
+
+.sidebar-tool-item small{
+  font-size:.54rem!important;
+}
+
+.sidebar-tool-item:hover{
+  color:#FFFFFF!important;
+  border-color:rgba(56,231,255,.13)!important;
+  background:rgba(56,231,255,.035)!important;
+}
+
+.sidebar-tool-item.active{
+  color:#FFFFFF!important;
+  border-color:rgba(175,255,104,.3)!important;
+  background:linear-gradient(
+    90deg,
+    rgba(175,255,104,.09),
+    rgba(56,231,255,.035)
+  )!important;
+  box-shadow:none!important;
+}
+
+#moreToolsButton{
+  display:grid!important;
+  margin-top:7px!important;
+  border-top:1px solid rgba(255,255,255,.05)!important;
+  border-radius:0 0 11px 11px!important;
+}
+
+#moreToolsButton.active{
+  color:#FFFFFF!important;
+  background:rgba(56,231,255,.035)!important;
+  border-color:rgba(56,231,255,.12)!important;
+  box-shadow:none!important;
+}
+
+.visual-nav.active.sidebar-tool-item{
+  box-shadow:none!important;
+}
+
+.sidebar-pulse-card{
+  position:static!important;
+  flex:0 0 auto;
+  width:auto!important;
+  margin:8px 0!important;
+  padding:10px!important;
+  border-radius:12px!important;
+}
+
+.sidebar-pulse-card.collapsed .visual-pulse-body,
+.sidebar-pulse-card.collapsed .visual-pulse-meta{
+  display:none!important;
+}
+
+.sidebar-pulse-card.collapsed{
+  gap:0!important;
+}
+
+#pulseCollapseButton{
+  display:grid;
+  place-items:center;
+  width:24px;
+  height:24px;
+  margin-left:auto;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:7px;
+  background:rgba(255,255,255,.025);
+  color:#738197;
+  font-size:.66rem;
+}
+
+.sidebar-pulse-card .visual-pulse-head{
+  gap:8px;
+}
+
+.sidebar-pulse-card .visual-pulse-body{
+  grid-template-columns:1fr 58px!important;
+}
+
+.sidebar-pulse-card .pulse-ring{
+  width:56px!important;
+  height:56px!important;
+}
+
+.sidebar-pulse-card .pulse-ring>div{
+  width:43px!important;
+  height:43px!important;
+}
+
+.sidebar-pulse-card .visual-pulse-meta{
+  grid-template-columns:1fr!important;
+  gap:5px!important;
+}
+
+.rail-bottom{
+  flex:0 0 auto;
+  margin-top:auto!important;
+  padding-top:6px;
+}
+
+@media(max-width:1150px){
+  .sidebar-tools-drawer{
+    display:none!important;
+  }
+}

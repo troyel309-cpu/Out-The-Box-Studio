@@ -1,0 +1,7 @@
+.prompt-director-upgrade{margin:22px 0;padding:20px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(10,14,24,.78);box-shadow:0 16px 44px rgba(0,0,0,.2)}
+.pd-header h3{margin:3px 0;font-size:1.35rem}.pd-header p{margin:0;opacity:.7}.pd-eyebrow{font-size:.7rem!important;font-weight:800;letter-spacing:.15em;opacity:.6!important}
+.pd-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.pd-field{display:grid;gap:6px}.pd-field span{font-size:.78rem;font-weight:700;opacity:.75}.pd-field select,.pd-field input,.pd-field textarea{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:rgba(255,255,255,.06);color:inherit}
+.pd-wide{margin-top:12px}.pd-preview{margin-top:16px;padding:14px;border-radius:12px;background:rgba(255,255,255,.05)}.pd-preview p{margin:8px 0 0;line-height:1.55;opacity:.82}
+.pd-actions{display:flex;gap:10px;margin-top:14px}.pd-actions button{padding:11px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.18);cursor:pointer}.pd-actions button:first-child{background:#fff;color:#111;font-weight:800}.pd-actions button:last-child{background:rgba(255,255,255,.07);color:inherit}
+@media(max-width:760px){.pd-grid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.pd-grid{grid-template-columns:1fr}.pd-actions{flex-direction:column}}

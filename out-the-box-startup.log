@@ -1,0 +1,12 @@
+Project: /Users/troycampbell/Downloads/Out_the_Box_Studio_V5_2_1_One_Click
+Node: v24.18.0
+Checking project setup...
+
+up to date in 335ms
+
+Starting Out the Box Studio...
+Keep this Terminal window open while you use the studio.
+
+Out the Box Studio running at http://localhost:3000
+AI provider: OpenAI connected
+Studio is ready: http://127.0.0.1:3000
