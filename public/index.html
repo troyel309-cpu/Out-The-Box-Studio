@@ -4,237 +4,255 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Out the Box Studio</title>
-  <meta name="description" content="A friendly AI creative studio for turning ideas into finished work.">
+  <meta name="description" content="A living AI creative studio that turns ideas into finished work.">
   <link rel="icon" href="/otb-brand-icon.svg">
-  <link rel="stylesheet" href="/v2.css">
-  <link rel="stylesheet" href="/otb-brand-upgrade.css">
-  <link rel="stylesheet" href="/video-studio-v1.css">
-  <link rel="stylesheet" href="/challenge-demo.css">
-  <link rel="stylesheet" href="/proof-center.css">
+  <link rel="stylesheet" href="/app-v5.css">
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar">
-      <a class="brand" href="#" data-page="studio">
-        <img src="/otb-v2-logo.svg" alt="Out the Box Studio">
+  <div class="app">
+    <aside class="rail">
+      <a class="brand" href="#" data-view="home">
+        <img src="/otb-v2-logo.svg" alt="">
         <div>
-          <strong>Out the Box Studio</strong>
-          <span>Creative Operating System</span>
+          <strong>Out the Box</strong>
+          <span>Living Studio</span>
         </div>
       </a>
 
-      <nav class="main-nav" aria-label="Main navigation">
-        <button class="nav-item active" data-page="studio">
-          <span>✦</span><div><strong>Studio</strong><small>Create something new</small></div>
-        </button>
-        <button class="nav-item" data-page="library">
-          <span>◈</span><div><strong>Dream Library</strong><small>Your saved work</small></div>
-        </button>
-        <button class="nav-item" data-page="production">
-          <span>🎬</span><div><strong>Production</strong><small>See how it works</small></div>
-        </button>
+      <nav>
+        <button class="nav active" data-view="home"><span>⌂</span>Home</button>
+        <button class="nav" data-view="create"><span>✦</span>Create</button>
+        <button class="nav" data-view="media"><span>◈</span>Media</button>
+        <button class="nav" data-view="projects"><span>▦</span>Projects</button>
+        <button class="nav" data-view="production"><span>◎</span>Production</button>
       </nav>
 
-      <button id="moreToolsButton" class="more-button" aria-expanded="false">
-        <span>•••</span><div><strong>More tools</strong><small>Assets, workforce, insights</small></div>
-      </button>
-
-      <div id="moreToolsPanel" class="more-tools" hidden>
-        <button data-tool="assets"><span>▱</span><div><strong>Asset Vault</strong><small>Pictures and references</small></div></button>
-        <button data-tool="workforce"><span>👥</span><div><strong>AI Workforce</strong><small>Live creative crew</small></div></button>
-        <button data-tool="insights"><span>▥</span><div><strong>Insights</strong><small>Evidence and status</small></div></button>
+      <div class="rail-status">
+        <div><i></i><strong>Studio online</strong></div>
+        <span id="railStatus">Waiting for your next idea</span>
       </div>
 
-      <div id="sidebarPulse" class="sidebar-pulse">
-        <div class="pulse-title"><span></span><strong>Studio ready</strong></div>
-        <small id="pulseDetail">Waiting for your idea</small>
-        <div class="pulse-track"><i id="pulseBar"></i></div>
-      </div>
-
-      <button id="newDreamSide" class="side-new">＋ New Dream</button>
+      <button class="new-job" data-view="create">＋ New production</button>
     </aside>
 
-    <main class="main">
+    <main>
       <header class="topbar">
-        <div class="search-box">
-          <span>⌕</span>
-          <input id="globalSearch" placeholder="Search dreams, assets, and projects">
-          <kbd>⌘ K</kbd>
+        <div>
+          <span class="crumb">OUT THE BOX STUDIO</span>
+          <h1 id="viewTitle">Command Center</h1>
         </div>
-        <button id="newDreamTop" class="primary-button">✦ New Dream</button>
+        <div class="top-actions">
+          <button class="ghost" id="refreshAll">Refresh</button>
+          <button class="primary" data-view="create">Start creating</button>
+        </div>
       </header>
 
-      <section id="studioPage" class="page active">
-        <section class="welcome-card">
-          <div class="welcome-copy">
-            <span class="eyebrow">YOUR CREATIVE STUDIO</span>
-            <h1>What do you want<br><em>to create today?</em></h1>
-            <p>Start with one idea. Choose a picture. The studio handles the creative production around it.</p>
-            <button id="heroStart" class="primary-button large">Start creating</button>
-          </div>
-          <div class="welcome-art">
-            <div class="art-glow"></div>
-            <img src="/otb-v2-logo.svg" alt="">
-          </div>
-        </section>
-
-        <section class="steps" aria-label="Creation steps">
-          <div class="step active" data-step="0"><span>1</span><strong>Describe</strong><small>Tell us the idea</small></div>
-          <i></i>
-          <div class="step" data-step="1"><span>2</span><strong>Choose</strong><small>Select a picture</small></div>
-          <i></i>
-          <div class="step" data-step="2"><span>3</span><strong>Create</strong><small>Start production</small></div>
-          <i></i>
-          <div class="step" data-step="3"><span>4</span><strong>Review</strong><small>See the result</small></div>
-        </section>
-
-        <section id="creator" class="creator-card">
-          <div class="creator-heading">
-            <div>
-              <span class="eyebrow">STEP 1</span>
-              <h2>Tell us what you want to make</h2>
+      <section class="view active" id="homeView">
+        <section class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow">YOUR CREATIVE WORKFORCE</span>
+            <h2>Bring the idea.<br><em>Watch the studio work.</em></h2>
+            <p>Pictures, video, characters, production, and proof—all working together in one living studio.</p>
+            <div class="hero-actions">
+              <button class="primary large" data-view="create">Start a production</button>
+              <button class="ghost large" data-view="production">Watch the workforce</button>
             </div>
-            <button id="templateButton" class="text-button">Use a template</button>
           </div>
 
-          <textarea id="ideaInput" rows="4" placeholder="Example: Make Tiny Troy welcoming a customer and handing them the keys to a new car."></textarea>
-
-          <div class="simple-actions">
-            <button id="optionsButton" class="secondary-button">More options</button>
-            <button id="createButton" class="primary-button">Bring it to life</button>
-          </div>
-
-          <div id="optionsPanel" class="options-panel" hidden>
-            <label>Format
-              <select id="productionType">
-                <option>Commercial</option>
-                <option>Social Post</option>
-                <option>Character Scene</option>
-                <option>Storyboard</option>
-                <option>Game Asset</option>
-                <option>Custom Project</option>
-              </select>
-            </label>
-            <label>Character
-              <select id="characterSelect"><option>Tiny Troy</option></select>
-            </label>
-            <label>Style
-              <select id="styleSelect">
-                <option>Polished 3D mascot</option>
-                <option>Cinematic realism</option>
-                <option>Animated feature</option>
-                <option>Commercial advertising</option>
-                <option>Graphic novel</option>
-              </select>
-            </label>
+          <div class="hero-orbit">
+            <div class="core"><img src="/otb-v2-logo.svg" alt=""></div>
+            <span class="orbit one">Director</span>
+            <span class="orbit two">Visuals</span>
+            <span class="orbit three">Video</span>
+            <span class="orbit four">Quality</span>
           </div>
         </section>
 
-        <section class="workspace-grid">
-          <article id="assetPanel" class="panel asset-panel">
-            <div class="panel-head">
-              <div><span class="eyebrow">STEP 2</span><h3>Choose a picture</h3></div>
-              <button id="refreshAssets" class="text-button">Refresh</button>
+        <section class="metric-grid">
+          <article><span>Projects</span><strong id="metricProjects">0</strong><small>Saved productions</small></article>
+          <article><span>Assets</span><strong id="metricAssets">0</strong><small>Pictures and references</small></article>
+          <article><span>Videos</span><strong id="metricVideos">0</strong><small>Video productions</small></article>
+          <article><span>Verified</span><strong id="metricVerified">0</strong><small>Evidence-backed results</small></article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="card activity-card">
+            <div class="card-head">
+              <div><span class="eyebrow">LIVE FEED</span><h3>Studio activity</h3></div>
+              <span class="live"><i></i>Live</span>
+            </div>
+            <div id="activityFeed" class="activity-feed"></div>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div><span class="eyebrow">QUICK START</span><h3>Choose your next move</h3></div>
+            </div>
+            <div class="quick-grid">
+              <button data-view="create"><span>✦</span><strong>Create from an idea</strong><small>Start with words</small></button>
+              <button data-view="media"><span>🖼️</span><strong>Upload media</strong><small>Pictures or video</small></button>
+              <button data-view="projects"><span>▦</span><strong>Open a project</strong><small>Continue existing work</small></button>
+              <button data-view="production"><span>◎</span><strong>See the workforce</strong><small>Watch the process</small></button>
+            </div>
+          </article>
+        </section>
+      </section>
+
+      <section class="view" id="createView">
+        <section class="section-head">
+          <div>
+            <span class="eyebrow">NEW PRODUCTION</span>
+            <h2>What are we building?</h2>
+            <p>Describe the result. Select a reference. The workforce handles the production path.</p>
+          </div>
+        </section>
+
+        <section class="create-layout">
+          <article class="card creator">
+            <label class="field">
+              <span>Production idea</span>
+              <textarea id="ideaInput" rows="6" placeholder="Example: Create a cinematic Tiny Troy commercial where he welcomes a customer, shows the vehicle, and hands them the keys."></textarea>
+            </label>
+
+            <div class="field-grid">
+              <label class="field"><span>Format</span>
+                <select id="productionType">
+                  <option>Commercial</option>
+                  <option>Social Post</option>
+                  <option>Character Scene</option>
+                  <option>Storyboard</option>
+                  <option>Game Asset</option>
+                </select>
+              </label>
+              <label class="field"><span>Style</span>
+                <select id="styleSelect">
+                  <option>Polished 3D mascot</option>
+                  <option>Cinematic realism</option>
+                  <option>Animated feature</option>
+                  <option>Commercial advertising</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="create-actions">
+              <button class="ghost" id="useTemplate">Use example</button>
+              <button class="primary large" id="createButton">Start production</button>
+            </div>
+          </article>
+
+          <article class="card reference-card">
+            <div class="card-head">
+              <div><span class="eyebrow">REFERENCE</span><h3>Choose a picture</h3></div>
+              <button class="ghost small" data-view="media">Upload</button>
             </div>
             <div id="selectedReference" class="selected-reference">
-              <div class="empty-state"><span>＋</span><strong>Select a reference</strong><small>Your chosen picture guides the result.</small></div>
+              <div class="empty">No picture selected</div>
             </div>
-            <div id="assetGrid" class="asset-grid"><div class="loading">Loading pictures…</div></div>
+            <div id="assetGrid" class="asset-grid"></div>
           </article>
-
-          <article class="panel result-panel">
-            <div class="panel-head">
-              <div><span class="eyebrow">RESULT</span><h3>Your creation</h3></div>
-              <span id="resultStatus" class="status">Waiting</span>
-            </div>
-            <div id="resultStage" class="result-stage">
-              <div class="empty-state">
-                <img src="/otb-v2-logo.svg" alt="">
-                <strong>The studio is ready</strong>
-                <small>Your finished image will appear here.</small>
-              </div>
-            </div>
-            <div class="result-actions">
-              <button id="variationButton" class="secondary-button">Create variation</button>
-              <button id="openImageButton" class="secondary-button">Open image</button>
-            </div>
-          </article>
-
-          <aside id="workforcePanel" class="panel workforce-panel">
-            <div class="panel-head">
-              <div><span class="eyebrow">LIVE STUDIO</span><h3>Creative crew</h3></div>
-              <span id="crewStatus" class="status ready">Ready</span>
-            </div>
-            <div id="crewList" class="crew-list">
-              <div class="crew-row complete"><span>✓</span><div><strong>Studio connected</strong><small>Ready for your next idea</small></div></div>
-            </div>
-            <label class="toggle-row">
-              <input id="continuityToggle" type="checkbox" checked>
-              <span></span>
-              <div><strong>Continuity Lock</strong><small>Keep the character recognizable.</small></div>
-            </label>
-          </aside>
         </section>
 
-        <button id="advancedDetailsButton" class="advanced-button">Show advanced production details</button>
-
-        <section id="advancedDetails" class="advanced-details" hidden>
-          <div class="pipeline">
-            <div class="pipe active"><span>1</span><strong>Idea</strong></div><i></i>
-            <div class="pipe"><span>2</span><strong>Prompt</strong></div><i></i>
-            <div class="pipe"><span>3</span><strong>Compose</strong></div><i></i>
-            <div class="pipe"><span>4</span><strong>Render</strong></div><i></i>
-            <div class="pipe"><span>5</span><strong>Verify</strong></div>
+        <section class="card production-result">
+          <div class="card-head">
+            <div><span class="eyebrow">RESULT</span><h3>Your finished creation</h3></div>
+            <span id="resultStatus" class="status">Waiting</span>
           </div>
-          <div id="timeline" class="timeline">
-            <div><time>Now</time><span></span><p><strong>Studio opened</strong><small>Creative system ready.</small></p></div>
+          <div id="resultStage" class="result-stage">
+            <div class="empty-result">
+              <img src="/otb-v2-logo.svg" alt="">
+              <strong>The studio is ready</strong>
+              <small>Your completed creation will appear here.</small>
+            </div>
           </div>
         </section>
       </section>
 
-      <section id="libraryPage" class="page">
-        <div class="page-heading">
-          <div><span class="eyebrow">YOUR WORK</span><h1>Dream Library</h1><p>Open and continue your saved creations.</p></div>
-          <button id="refreshProjects" class="secondary-button">Refresh</button>
+      <section class="view" id="mediaView">
+        <section class="section-head">
+          <div>
+            <span class="eyebrow">MEDIA VAULT</span>
+            <h2>Bring your pictures and videos in</h2>
+            <p>Upload from your Mac, iPhone Photos library, or drag files directly into the Studio.</p>
+          </div>
+        </section>
+
+        <section class="upload-grid">
+          <label class="upload-zone" id="imageDropZone">
+            <input id="imageUploadInput" type="file" accept="image/*,.heic,.heif,.jpg,.jpeg,.png,.webp" multiple>
+            <span>🖼️</span>
+            <strong>Upload pictures</strong>
+            <small>HEIC, HEIF, JPG, PNG, WEBP · up to 15 MB</small>
+          </label>
+
+          <label class="upload-zone" id="videoDropZone">
+            <input id="videoUploadInput" type="file" accept="video/*,.mov,.mp4,.m4v,.webm" multiple>
+            <span>🎬</span>
+            <strong>Upload videos</strong>
+            <small>MOV, MP4, M4V, WEBM · up to 150 MB</small>
+          </label>
+        </section>
+
+        <div class="upload-status">
+          <strong id="uploadStatus">Ready for media.</strong>
+          <span><i id="uploadProgress"></i></span>
         </div>
-        <div id="projectGrid" class="project-grid"><div class="loading">Loading projects…</div></div>
+
+        <section class="card media-library">
+          <div class="card-head">
+            <div><span class="eyebrow">YOUR MEDIA</span><h3>Recent uploads</h3></div>
+          </div>
+          <div id="mediaGrid" class="media-grid"></div>
+        </section>
       </section>
 
-      <section id="productionPage" class="page">
-        <div class="page-heading">
-          <div><span class="eyebrow">BEHIND THE EXPERIENCE</span><h1>Production</h1><p>The advanced proof is here when you need it—not in your way while creating.</p></div>
-        </div>
-        <div class="production-grid">
-          <article><span>01</span><h3>Studio Director</h3><p>Understands the idea and prepares the production brief.</p></article>
-          <article><span>02</span><h3>Character Continuity</h3><p>Protects identity, proportions, and recognizable details.</p></article>
-          <article><span>03</span><h3>Image Direction</h3><p>Builds the scene from your selected picture and instructions.</p></article>
-          <article><span>04</span><h3>Evidence Quality</h3><p>Checks the generated result before completion.</p></article>
-        </div>
-        <div class="evidence-row">
-          <div><span>Provider</span><strong>OpenAI</strong></div>
-          <div><span>Image model</span><strong>gpt-image-1</strong></div>
-          <div><span>Evidence mode</span><strong>Verified</strong></div>
-          <div><span>Ownership</span><strong>Owner controlled</strong></div>
-        </div>
+      <section class="view" id="projectsView">
+        <section class="section-head">
+          <div>
+            <span class="eyebrow">DREAM LIBRARY</span>
+            <h2>Your productions</h2>
+            <p>Open completed and in-progress work.</p>
+          </div>
+        </section>
+        <div id="projectGrid" class="project-grid"></div>
+      </section>
+
+      <section class="view" id="productionView">
+        <section class="section-head">
+          <div>
+            <span class="eyebrow">LIVING WORKFORCE</span>
+            <h2>Watch work move through the Studio</h2>
+            <p>Each position owns a clear part of production. The job moves—not you.</p>
+          </div>
+        </section>
+
+        <section class="worker-line" id="workerLine"></section>
+
+        <section class="dashboard-grid">
+          <article class="card">
+            <div class="card-head">
+              <div><span class="eyebrow">CURRENT JOB</span><h3 id="currentJobTitle">No active production</h3></div>
+              <span id="crewStatus" class="status">Ready</span>
+            </div>
+            <div id="jobTimeline" class="job-timeline"></div>
+          </article>
+
+          <article class="card proof-card">
+            <div class="card-head">
+              <div><span class="eyebrow">PROOF</span><h3>Evidence center</h3></div>
+            </div>
+            <div class="proof-list">
+              <div><span>Project registry</span><strong>Connected</strong></div>
+              <div><span>Asset registry</span><strong>Connected</strong></div>
+              <div><span>Worker routing</span><strong>Active</strong></div>
+              <div><span>Release gate</span><strong>Evidence required</strong></div>
+            </div>
+          </article>
+        </section>
       </section>
     </main>
   </div>
 
-  <dialog id="templateDialog">
-    <div class="dialog-head"><div><span class="eyebrow">STARTING POINTS</span><h2>Choose a template</h2></div><button id="closeTemplates">×</button></div>
-    <div class="template-list">
-      <button data-template="Tiny Troy welcoming a customer into a bright modern showroom and handing them the keys to their new vehicle.">🧸 <strong>Tiny Troy Sales Moment</strong></button>
-      <button data-template="Create a bold social media visual with a clear focal point, high energy, and room for a short headline.">📱 <strong>Social Attention Hook</strong></button>
-      <button data-template="Create the hero image for a cinematic 30-second commercial with a clear character, product, and emotional promise.">🎬 <strong>Commercial Hero</strong></button>
-      <button data-template="Create an opening storyboard frame that establishes the character, location, and action.">🖼️ <strong>Storyboard Opening</strong></button>
-    </div>
-  </dialog>
-
   <div id="toast" class="toast"></div>
-  <script src="/v2.js"></script>
-  <script src="/otb-brand-upgrade.js"></script>
-  <script src="/video-studio-v1.js"></script>
-  <script src="/challenge-demo.js"></script>
-  <script src="/proof-center.js"></script>
+  <script src="/app-v5.js"></script>
 </body>
 </html>
