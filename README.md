@@ -1,18 +1,37 @@
-# Out the Box Studio V4 — Reference Asset Intake
+# Out the Box Studio
 
-V4 adds owner-controlled picture uploads and three production modes:
+**Turn an idea into organized, production-ready creative work.**
 
-- **Hybrid:** upload a picture, select it, and let AI build from it.
-- **My Picture Only:** attach and preserve the original picture as a production artifact.
-- **AI Only:** generate from text without an uploaded reference.
+Out the Box Studio is a local-first AI creative production platform that helps creators move from a raw idea to a governed production workflow. Instead of one general assistant, the studio identifies the work, assembles specialized workers, manages references and characters, and keeps production assets organized.
 
-Uploaded PNG, JPG, and WEBP files are stored locally in `public/uploads`. Metadata is stored in `data/assets.json`. The API key remains server-side in your Mac terminal environment.
+## What it does
 
-## Run
+- Creates and manages creative projects
+- Routes work through specialized AI workers
+- Preserves character continuity
+- Stores reference images and production assets locally
+- Supports Hybrid, My Picture Only, and AI Only modes
+- Plans image, story, voice, video, and release work
+- Keeps the OpenAI API key server-side
+
+## Workflow
+
+```text
+Idea → Capabilities → Qualified Crew → Execution Plan → Production → Verification
+```
+
+## Technology
+
+- Node.js 20+
+- JavaScript ES modules
+- HTML and CSS
+- OpenAI API
+- Local JSON registries
+
+## Run locally
 
 ```bash
-cd ~/Downloads/Out_the_Box_Studio_App_V4_Reference_Asset_Intake
-read -s "OPENAI_API_KEY?Paste your API key: "
+read -s "OPENAI_API_KEY?Paste your OpenAI API key: "
 export OPENAI_API_KEY
 echo
 npm start
@@ -20,20 +39,49 @@ npm start
 
 Open `http://localhost:3000`.
 
-## First test
+## Verify
 
-1. Upload a Tiny Troy reference picture.
-2. Mark it as an official Character reference.
-3. Choose **Hybrid — my picture + AI**.
-4. Select the uploaded picture.
-5. Enter a scene request and choose **Build From My Picture**.
+```bash
+npm run check
+```
 
-V4 preserves the V3 project library and generated image included in the package.
+## Reference asset modes
 
+**Hybrid:** use an uploaded picture with AI.
 
-## V4.1 upload fix
-The JSON request limit now supports image uploads up to 15 MB, including base64 overhead.
+**My Picture Only:** preserve the original picture as the production artifact.
 
+**AI Only:** create from a written request without an uploaded reference.
 
-## V4.2 reliable upload repair
-V4.2 sends image bytes directly to the local server instead of converting them to large base64 JSON requests. It adds a selected-image preview, visible upload progress, persistent success/error messages, and server-side upload logging.
+Supported uploads: PNG, JPG/JPEG, and WEBP up to 15 MB.
+
+## Character continuity
+
+Registered characters can include appearance, wardrobe, personality, continuity rules, negative constraints, and version information.
+
+## Current release
+
+**v1.0.0 — OpenAI Build Week submission**
+
+See [`RELEASE_NOTES.md`](RELEASE_NOTES.md), [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md), and [`docs/SUBMISSION.md`](docs/SUBMISSION.md).
+
+## Roadmap
+
+- Expanded image, video, and audio workflows
+- Stronger production verification
+- Reusable templates
+- Collaboration
+- Provider routing
+- Evidence dashboards
+
+## Principle
+
+> The idea moves through the studio. The creator does not have to carry every job alone.
+
+## Security
+
+Never commit API keys, `.env` files, private customer information, or private uploaded assets. See [`SECURITY.md`](SECURITY.md).
+
+## Status
+
+Built and locally verified. Production-scale usage and outcome proof remain future milestones.
